@@ -26,7 +26,7 @@ public class NewsServiceImpl implements INewsService<News>{
 
     @Override
     public void save(News news) {
-        newsRepository.save(news);
+        newsRepository.saveNews(news);
     }
 
     @Override

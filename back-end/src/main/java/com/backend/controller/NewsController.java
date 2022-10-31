@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -22,6 +23,14 @@ public class NewsController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(newsList,HttpStatus.OK);
+    }
+    @GetMapping("/news/{id}")
+    public ResponseEntity<News> findNewsById(@PathVariable Long id){
+        Optional<News> news=newsService.findById(id);
+        if(!news.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(news.get(),HttpStatus.OK);
     }
     @PostMapping("/news")
     public ResponseEntity<News> createNews(@RequestBody News news){
