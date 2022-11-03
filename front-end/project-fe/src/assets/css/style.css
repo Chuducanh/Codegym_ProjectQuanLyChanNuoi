@@ -820,7 +820,7 @@ a:hover {
 .team-slider {
   overflow: hidden;
   padding-bottom: 100px;
-  display: flex;
+
 }
 
 .team-slider .slick-list {

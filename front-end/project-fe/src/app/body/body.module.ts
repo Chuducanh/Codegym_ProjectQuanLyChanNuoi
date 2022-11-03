@@ -6,6 +6,7 @@ import { BodyComponent } from './body.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 
+
 @NgModule({
     declarations: [BodyComponent, HomepageComponent],
     exports: [
@@ -13,7 +14,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     ],
     imports: [
         CommonModule,
-        BodyRoutingModule
+        BodyRoutingModule,
+
     ]
 })
 export class BodyModule { }
