@@ -3,6 +3,7 @@ package vn.codegym.backend.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -11,10 +12,12 @@ import java.util.List;
 public class User {
     @Id
     @Column(name = "username")
+    @Pattern(regexp = "[a-zA-Z0-9_-]{5,12}$")
     private String username;
     @Column(name = "password")
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "username")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "username")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roles;
 }

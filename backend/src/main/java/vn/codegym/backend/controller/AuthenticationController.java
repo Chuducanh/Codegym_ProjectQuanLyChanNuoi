@@ -15,12 +15,13 @@ import vn.codegym.backend.payload.response.JwtResponse;
 import vn.codegym.backend.security.JwtUtil;
 import vn.codegym.backend.security.MyUserDetails;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
-@RequestMapping({"/auth"})
+@RequestMapping("/auth")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenManager;
@@ -30,20 +31,19 @@ public class AuthenticationController {
     public AuthenticationController() {
     }
 
-    @PostMapping({"/login"})
-    public ResponseEntity<JwtResponse> authenticate(@RequestBody LoginRequest loginRequest) {
-        try {
+    @PostMapping("/login")
+    public ResponseEntity<JwtResponse> authenticate(@Valid @RequestBody LoginRequest loginRequest) {
             Authentication authentication = this.authenManager.
                     authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+            System.out.println(authentication);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            MyUserDetails myUserDetails = (MyUserDetails)authentication.getPrincipal();
+
+            MyUserDetails myUserDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             List<String> roles = myUserDetails.getAuthorities().stream().
                     map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+
             String accessToken = this.jwtUtil.generateJwtToken(loginRequest.getUsername());
             JwtResponse jwtResponse = new JwtResponse(myUserDetails.getUsername(), accessToken, roles);
             return new ResponseEntity(jwtResponse, HttpStatus.OK);
-        } catch (BadCredentialsException var7) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
     }
 }
