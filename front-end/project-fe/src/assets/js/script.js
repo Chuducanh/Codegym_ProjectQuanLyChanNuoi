@@ -19,40 +19,7 @@
   $(document).ready(function () {
     $('.venobox').venobox();
     // team slider
-    $('.team-slider').slick({
-      dots: false,
-      infinite: true,
-      speed: 1000,
-      autoplay: true,
-      autoplaySpeed: 800,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      arrows: true,
-      prevArrow: '<button type=\'button\' class=\'prevArrow\'><i class=\'ti-arrow-left\'></i></button>',
-      nextArrow: '<button type=\'button\' class=\'nextArrow\'><i class=\'ti-arrow-right\'></i></button>',
-      responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1
-        }
-      },
-        {
-          breakpoint: 991,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1
-          }
-        },
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
+
 // clients logo slider
     $('.client-logo-slider').slick({
       infinite: true,

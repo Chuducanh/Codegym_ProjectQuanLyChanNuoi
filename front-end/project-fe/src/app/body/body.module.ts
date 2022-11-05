@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BodyRoutingModule } from './body-routing.module';
 import { BodyComponent } from './body.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import {NgxSlickJsModule} from "ngx-slickjs";
 
 
 
@@ -15,6 +16,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     imports: [
         CommonModule,
         BodyRoutingModule,
+        NgxSlickJsModule,
 
     ]
 })

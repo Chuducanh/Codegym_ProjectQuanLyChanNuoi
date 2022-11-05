@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Slick} from 'ngx-slickjs';
+import {NewsService} from '../../service/news/news.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {News} from '../../model/news/news';
 
 @Component({
   selector: 'app-homepage',
@@ -6,59 +10,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  // slideConfig={
-  //   infinite: true,
-  //   slidesToShow: 5,
-  //   slidesToScroll: 1,
-  //   autoplay: true,
-  //   dots: false,
-  //   arrows: false,
-  //   responsive: [{
-  //     breakpoint: 1024,
-  //     settings: {
-  //       slidesToShow: 3,
-  //       slidesToScroll: 1
-  //     }
-  //   },
-  //     {
-  //       breakpoint: 600,
-  //       settings: {
-  //         slidesToShow: 3,
-  //         slidesToScroll: 1
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 480,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 1
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 400,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1
-  //       }
-  //     }
-  //   ]
-  // };
-  // images=[
-  //   {img:"assets/images/clients-logo/client-logo-1.png"},
-  //   {img:"assets/images/clients-logo/client-logo-2.png"},
-  //   {img:"assets/images/clients-logo/client-logo-3.png"},
-  //   {img:"assets/images/clients-logo/client-logo-4.png"},
-  //   {img:"assets/images/clients-logo/client-logo-5.png"},
-  //   {img:"assets/images/clients-logo/client-logo-1.png"},
-  //   {img:"assets/images/clients-logo/client-logo-2.png"},
-  //   {img:"assets/images/clients-logo/client-logo-3.png"},
-  //   {img:"assets/images/clients-logo/client-logo-4.png"},
-  //   {img:"assets/images/clients-logo/client-logo-5.png"}
-  // ];
+  config: Slick.Config = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 800,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    prevArrow: '<button type=\'button\' class=\'prevArrow\'><i class=\'ti-arrow-left\'></i></button>',
+    nextArrow: '<button type=\'button\' class=\'nextArrow\'><i class=\'ti-arrow-right\'></i></button>',
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
-  constructor() { }
+  newsList: News[];
 
-  ngOnInit(): void {
+  constructor(private newsService: NewsService, private route: Router, private activateRoute: ActivatedRoute) {
+    this.getAll();
   }
 
+  ngOnInit(): void {
+    this.getAll();
+  }
+
+  private getAll() {
+    return this.newsService.getAll().subscribe(news => {
+      this.newsList = news;
+      console.log(this.newsList);
+    }, error => {
+      console.log(error);
+    });
+  }
 }

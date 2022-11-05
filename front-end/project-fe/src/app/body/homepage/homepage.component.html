@@ -1,6 +1,7 @@
 <script src="assets/js/script.js"></script>
 <!-- hero area -->
-<section class="hero-section hero" data-background="" style="background-image: url(assets/images/hero-area/banner-bg.png);">
+<section class="hero-section hero" data-background=""
+         style="background-image: url(assets/images/hero-area/banner-bg.png);">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-sm-12 zindex-1">
@@ -20,12 +21,16 @@
   <div id="scene">
     <img class="img-fluid hero-bg-1 up-down-animation" src="assets/images/background-shape/feature-bg-2.png" alt="">
     <img class="img-fluid hero-bg-2 left-right-animation" src="assets/images/background-shape/seo-ball-1.png" alt="">
-    <img class="img-fluid hero-bg-3 left-right-animation" src="assets/images/background-shape/seo-half-cycle.png" alt="">
+    <img class="img-fluid hero-bg-3 left-right-animation" src="assets/images/background-shape/seo-half-cycle.png"
+         alt="">
     <img class="img-fluid hero-bg-4 up-down-animation" src="assets/images/background-shape/green-dot.png" alt="">
-    <img class="img-fluid hero-bg-5 left-right-animation" src="assets/images/background-shape/blue-half-cycle.png" alt="">
+    <img class="img-fluid hero-bg-5 left-right-animation" src="assets/images/background-shape/blue-half-cycle.png"
+         alt="">
     <img class="img-fluid hero-bg-6 up-down-animation" src="assets/images/background-shape/seo-ball-1.png" alt="">
-    <img class="img-fluid hero-bg-7 left-right-animation" src="assets/images/background-shape/yellow-triangle.png" alt="">
-    <img class="img-fluid hero-bg-8 up-down-animation" src="assets/images/background-shape/service-half-cycle.png" alt="">
+    <img class="img-fluid hero-bg-7 left-right-animation" src="assets/images/background-shape/yellow-triangle.png"
+         alt="">
+    <img class="img-fluid hero-bg-8 up-down-animation" src="assets/images/background-shape/service-half-cycle.png"
+         alt="">
     <img class="img-fluid hero-bg-9 up-down-animation" src="assets/images/background-shape/team-bg-triangle.png" alt="">
   </div>
 </section>
@@ -37,7 +42,8 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="section-title">ƯU ĐIỂM CỦA ỨNG DỤNG</h2>
-        <p class="mb-100">Dưới đây là lý do vì sao bạn nên chọn sản phẩm của chúng tôi<br>Benefits of choosing my product</p>
+        <p class="mb-100">Dưới đây là lý do vì sao bạn nên chọn sản phẩm của chúng tôi<br>Benefits of choosing my
+          product</p>
       </div>
       <!-- feature item -->
       <div class="col-md-6 mb-80">
@@ -83,7 +89,8 @@
           </div>
           <div>
             <h4>Đầy đủ chức năng hệ thống</h4>
-            <p>Bao gồm quản lý xuất nhập chuồng, tình trạng sức khỏe vật nuôi, cũng như quản lý nhân sự và nhiều tính năng khác</p>
+            <p>Bao gồm quản lý xuất nhập chuồng, tình trạng sức khỏe vật nuôi, cũng như quản lý nhân sự và nhiều tính
+              năng khác</p>
           </div>
         </div>
       </div>
@@ -107,7 +114,8 @@
       <div class="col-md-5">
         <h2 class="section-title">Quản lý thực phẩm, chăm sóc vật nuôi</h2>
         <p>Luôn đảm bảo vật nuôi khỏe mạnh, mau ăn chóng lớn<br>
-          Thức ăn luôn được bảo quản,quản lý nghiêm ngặt theo tiêu chuẩn ISO, quản lý được tình trạng sức khỏe cho từng đàn
+          Thức ăn luôn được bảo quản,quản lý nghiêm ngặt theo tiêu chuẩn ISO, quản lý được tình trạng sức khỏe cho từng
+          đàn
         </p>
       </div>
     </div>
@@ -142,8 +150,10 @@
   <!-- background image -->
   <img class="img-fluid service-bg" src="assets/images/backgrounds/service-bg.png" alt="service-bg">
   <!-- background shapes -->
-  <img class="service-bg-shape-1 up-down-animation" src="assets/images/background-shape/service-half-cycle.png" alt="background-shape">
-  <img class="service-bg-shape-2 left-right-animation" src="assets/images/background-shape/feature-bg-2.png" alt="background-shape">
+  <img class="service-bg-shape-1 up-down-animation" src="assets/images/background-shape/service-half-cycle.png"
+       alt="background-shape">
+  <img class="service-bg-shape-2 left-right-animation" src="assets/images/background-shape/feature-bg-2.png"
+       alt="background-shape">
 </section>
 <!-- /service -->
 
@@ -159,55 +169,70 @@
     </div>
     <div class="col-10 mx-auto">
 
+
       <div class="team-slider">
-        <!-- team-member -->
-        <div class="team-member">
-          <div class="d-flex mb-4">
-            <div class="card mb-3">
-              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/nha-nong-lam-giau/nuoi-bo-kobe(1).jpg" alt="team-member">
-            </div>
-          </div>
-          <h5 class="card-title">Nuôi thâm canh bò thịt Kobe đạt hiệu quả cao</h5>
-          <p class="card-text">Để thúc đẩy ngành chăn nuôi phát triển theo hướng bền vững, nhiều năm qua, Trung tâm Khuyến nông Bình Định đã triển khai nhiều mô hình chăn nuôi bò thịt chất lượng cao.</p>
-          <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+        <div slickContainer #slickController="slick" [slickConfig]="config">
+          <ng-container *ngIf="slickController.initialize">
+            <div class="team-member" slickItem *ngFor="let item of newsList">
+              <div class="d-flex mb-4">
+                <div class="card mb-3">
+                  <img class="card-img-top" src="{{item.source_url}}" alt="team-member">
+                </div>
 
+              </div>
+              <h5 class="card-title">{{item.title}}</h5>
+              <p class="card-text"><small class="text-muted">{{item.dateCreate | date:"dd/MM/yyyy"}}</small></p>
+            </div>
+          </ng-container>
         </div>
         <!-- team-member -->
-        <div class="team-member">
-          <div class="d-flex mb-4">
-            <div class="card mb-3">
-              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/cham-soc-gia-cam-giao-mua.jpg" alt="team-member">
-            </div>
-          </div>
-          <h5 class="card-title">Chăm sóc gia súc, gia cầm thời điểm giao mùa</h5>
-          <p class="card-text">Vào giai đoạn giao mùa, thời tiết thay đổi thất thường khiến vật nuôi không kịp thích nghi, sức đề kháng giảm. Vì vậy để đảm bảo sức khỏe và nâng cao sức đề kháng cho đàn vật nuôi, người chăn nuôi cần áp dụng tốt các biện pháp chăm sóc</p>
-          <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+        <!--        <div class="team-member">-->
+        <!--          <div class="d-flex mb-4">-->
+        <!--            <div class="card mb-3">-->
+        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/nha-nong-lam-giau/nuoi-bo-kobe(1).jpg" alt="team-member">-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <h5 class="card-title">Nuôi thâm canh bò thịt Kobe đạt hiệu quả cao</h5>-->
+        <!--          <p class="card-text">Để thúc đẩy ngành chăn nuôi phát triển theo hướng bền vững, nhiều năm qua, Trung tâm Khuyến nông Bình Định đã triển khai nhiều mô hình chăn nuôi bò thịt chất lượng cao.</p>-->
+        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
 
-        </div>
-        <!-- team-member -->
-        <div class="team-member">
-          <div class="d-flex mb-4">
-            <div class="card mb-3">
-              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/nuoi-bo-bac-giang.jpg" alt="team-member">
-            </div>
-          </div>
-          <h5 class="card-title">Phòng trừ bệnh ký sinh trùng đường máu cho trâu, bò, ngựa</h5>
-          <p class="card-text">Do thời tiết chuyển mùa nên sáng và đêm trời lạnh, có nhiều sương làm cho đàn vật nuôi chưa thích nghi, dễ mắc các bệnh về đường hô hấp, tiêu hóa. Đặc biệt, đàn trâu, bò, ngựa dễ mắc bệnh ký sinh trùng đường máu.</p>
-          <p class="card-text"><small class="text-muted">27/10/2022</small></p>
-        </div>
+        <!--        </div>-->
+        <!--        &lt;!&ndash; team-member &ndash;&gt;-->
+        <!--        <div class="team-member">-->
+        <!--          <div class="d-flex mb-4">-->
+        <!--            <div class="card mb-3">-->
+        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/cham-soc-gia-cam-giao-mua.jpg" alt="team-member">-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <h5 class="card-title">Chăm sóc gia súc, gia cầm thời điểm giao mùa</h5>-->
+        <!--          <p class="card-text">Vào giai đoạn giao mùa, thời tiết thay đổi thất thường khiến vật nuôi không kịp thích nghi, sức đề kháng giảm. Vì vậy để đảm bảo sức khỏe và nâng cao sức đề kháng cho đàn vật nuôi, người chăn nuôi cần áp dụng tốt các biện pháp chăm sóc</p>-->
+        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
 
-        <!-- team-member -->
-        <div class="team-member">
-          <div class="d-flex mb-4">
-            <div class="card mb-3">
-              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/heo-rung.jpg" alt="team-member">
-            </div>
-          </div>
-          <h5 class="card-title">Chế độ dinh dưỡng cho heo rừng</h5>
-          <p class="card-text">Nuôi heo rừng không còn là mô hình xa lạ, tuy nhiên để heo phát triển tốt, chắc thịt cần lưu ý đến chế độ dinh dưỡng hợp lý trong quá trình chăm sóc.</p>
-          <p class="card-text"><small class="text-muted">27/10/2022</small></p>
+        <!--        </div>-->
+        <!--        &lt;!&ndash; team-member &ndash;&gt;-->
+        <!--        <div class="team-member">-->
+        <!--          <div class="d-flex mb-4">-->
+        <!--            <div class="card mb-3">-->
+        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/nuoi-bo-bac-giang.jpg" alt="team-member">-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <h5 class="card-title">Phòng trừ bệnh ký sinh trùng đường máu cho trâu, bò, ngựa</h5>-->
+        <!--          <p class="card-text">Do thời tiết chuyển mùa nên sáng và đêm trời lạnh, có nhiều sương làm cho đàn vật nuôi chưa thích nghi, dễ mắc các bệnh về đường hô hấp, tiêu hóa. Đặc biệt, đàn trâu, bò, ngựa dễ mắc bệnh ký sinh trùng đường máu.</p>-->
+        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
+        <!--        </div>-->
 
-        </div>
+        <!--        &lt;!&ndash; team-member &ndash;&gt;-->
+        <!--        <div class="team-member">-->
+        <!--          <div class="d-flex mb-4">-->
+        <!--            <div class="card mb-3">-->
+        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/heo-rung.jpg" alt="team-member">-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <h5 class="card-title">Chế độ dinh dưỡng cho heo rừng</h5>-->
+        <!--          <p class="card-text">Nuôi heo rừng không còn là mô hình xa lạ, tuy nhiên để heo phát triển tốt, chắc thịt cần lưu ý đến chế độ dinh dưỡng hợp lý trong quá trình chăm sóc.</p>-->
+        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
+
+        <!--        </div>-->
 
       </div>
     </div>
@@ -215,35 +240,59 @@
   <!-- backgound image -->
   <img src="assets/images/backgrounds/team-bg.png" alt="team-bg" class="img-fluid team-bg">
   <!-- background shapes -->
-  <img class="team-bg-shape-1 up-down-animation" src="assets/images/background-shape/seo-ball-1.png" alt="background-shape">
-  <img class="team-bg-shape-2 left-right-animation" src="assets/images/background-shape/seo-ball-1.png" alt="background-shape">
-  <img class="team-bg-shape-3 left-right-animation" src="assets/images/background-shape/team-bg-triangle.png" alt="background-shape">
-  <img class="team-bg-shape-4 up-down-animation img-fluid" src="assets/images/background-shape/team-bg-dots.png" alt="background-shape">
+  <img class="team-bg-shape-1 up-down-animation" src="assets/images/background-shape/seo-ball-1.png"
+       alt="background-shape">
+  <img class="team-bg-shape-2 left-right-animation" src="assets/images/background-shape/seo-ball-1.png"
+       alt="background-shape">
+  <img class="team-bg-shape-3 left-right-animation" src="assets/images/background-shape/team-bg-triangle.png"
+       alt="background-shape">
+  <img class="team-bg-shape-4 up-down-animation img-fluid" src="assets/images/background-shape/team-bg-dots.png"
+       alt="background-shape">
 </section>
 <!-- /team -->
 
 <!-- client logo slider -->
 <section class="section">
   <div class="container" id="">
-<!--    <div class="client-logo-slider align-self-center">-->
-<!--    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"  [config]="slideConfig">-->
-<!--        <a href="#" class="text-center d-block outline-0 p-5" ngxSlickItem *ngFor="let image of images">-->
-<!--          <img [src]="image?.img" alt="client-logo">-->
-<!--        </a>-->
-<!--    </ngx-slick-carousel>-->
-<!--    </div>-->
+    <!--    <div class="client-logo-slider align-self-center">-->
+    <!--    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"  [config]="slideConfig">-->
+    <!--        <a href="#" class="text-center d-block outline-0 p-5" ngxSlickItem *ngFor="let image of images">-->
+    <!--          <img [src]="image?.img" alt="client-logo">-->
+    <!--        </a>-->
+    <!--    </ngx-slick-carousel>-->
+    <!--    </div>-->
 
     <div class="client-logo-slider align-self-center">
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-1.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-2.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-3.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-4.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-5.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-1.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-2.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-3.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-4.png" alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid" src="assets/images/clients-logo/client-logo-5.png" alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-1.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-2.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-3.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-4.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-5.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-1.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-2.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-3.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-4.png"
+                                                                 alt="client-logo"></a>
+      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                 src="assets/images/clients-logo/client-logo-5.png"
+                                                                 alt="client-logo"></a>
     </div>
   </div>
 </section>
@@ -268,7 +317,8 @@
     </div>
   </div>
   <!-- background shapes -->
-  <img class="newsletter-bg-shape left-right-animation" src="assets/images/background-shape/seo-ball-2.png" alt="background-shape">
+  <img class="newsletter-bg-shape left-right-animation" src="assets/images/background-shape/seo-ball-2.png"
+       alt="background-shape">
 </section>
 <!-- /newsletter -->
 

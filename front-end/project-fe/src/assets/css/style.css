@@ -843,9 +843,11 @@ a:hover {
 
 .team-slider .prevArrow {
   left: 10px;
+  margin-bottom: -50px;
 }
 
 .team-slider .nextArrow {
+  margin-bottom: -50px;
   left: 50px;
 }
 
