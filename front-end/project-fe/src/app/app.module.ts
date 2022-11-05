@@ -8,13 +8,15 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {BodyModule} from './body/body.module';
 import {NgxSlickJsModule} from 'ngx-slickjs';
 import {HttpClientModule} from '@angular/common/http';
+import { LogosliderComponent } from './shared/logoslider/logoslider.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LogosliderComponent
   ],
   imports: [
     BrowserModule,

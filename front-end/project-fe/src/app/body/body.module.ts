@@ -5,11 +5,12 @@ import { BodyRoutingModule } from './body-routing.module';
 import { BodyComponent } from './body.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {NgxSlickJsModule} from "ngx-slickjs";
+import { NewsdetailComponent } from './newsdetail/newsdetail.component';
 
 
 
 @NgModule({
-    declarations: [BodyComponent, HomepageComponent],
+    declarations: [BodyComponent, HomepageComponent, NewsdetailComponent],
     exports: [
         BodyComponent
     ],
