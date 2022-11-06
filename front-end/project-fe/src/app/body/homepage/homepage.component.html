@@ -170,10 +170,10 @@
     <div class="col-10 mx-auto">
 
 
-      <div class="team-slider">
+      <div class="team-slider" id="newsletter">
         <div slickContainer #slickController="slick" [slickConfig]="config">
           <ng-container *ngIf="slickController.initialize">
-            <div class="team-member" slickItem *ngFor="let item of newsList">
+            <div class="team-member" style="height: 400px" slickItem *ngFor="let item of newsList">
               <a [routerLink]="['/news',item.id]">
               <div class="d-flex mb-4">
                 <div class="card mb-3">
@@ -188,60 +188,12 @@
 
           </ng-container>
         </div>
-        <!-- team-member -->
-        <!--        <div class="team-member">-->
-        <!--          <div class="d-flex mb-4">-->
-        <!--            <div class="card mb-3">-->
-        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/nha-nong-lam-giau/nuoi-bo-kobe(1).jpg" alt="team-member">-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <h5 class="card-title">Nuôi thâm canh bò thịt Kobe đạt hiệu quả cao</h5>-->
-        <!--          <p class="card-text">Để thúc đẩy ngành chăn nuôi phát triển theo hướng bền vững, nhiều năm qua, Trung tâm Khuyến nông Bình Định đã triển khai nhiều mô hình chăn nuôi bò thịt chất lượng cao.</p>-->
-        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
-
-        <!--        </div>-->
-        <!--        &lt;!&ndash; team-member &ndash;&gt;-->
-        <!--        <div class="team-member">-->
-        <!--          <div class="d-flex mb-4">-->
-        <!--            <div class="card mb-3">-->
-        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/cham-soc-gia-cam-giao-mua.jpg" alt="team-member">-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <h5 class="card-title">Chăm sóc gia súc, gia cầm thời điểm giao mùa</h5>-->
-        <!--          <p class="card-text">Vào giai đoạn giao mùa, thời tiết thay đổi thất thường khiến vật nuôi không kịp thích nghi, sức đề kháng giảm. Vì vậy để đảm bảo sức khỏe và nâng cao sức đề kháng cho đàn vật nuôi, người chăn nuôi cần áp dụng tốt các biện pháp chăm sóc</p>-->
-        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
-
-        <!--        </div>-->
-        <!--        &lt;!&ndash; team-member &ndash;&gt;-->
-        <!--        <div class="team-member">-->
-        <!--          <div class="d-flex mb-4">-->
-        <!--            <div class="card mb-3">-->
-        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/nuoi-bo-bac-giang.jpg" alt="team-member">-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <h5 class="card-title">Phòng trừ bệnh ký sinh trùng đường máu cho trâu, bò, ngựa</h5>-->
-        <!--          <p class="card-text">Do thời tiết chuyển mùa nên sáng và đêm trời lạnh, có nhiều sương làm cho đàn vật nuôi chưa thích nghi, dễ mắc các bệnh về đường hô hấp, tiêu hóa. Đặc biệt, đàn trâu, bò, ngựa dễ mắc bệnh ký sinh trùng đường máu.</p>-->
-        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
-        <!--        </div>-->
-
-        <!--        &lt;!&ndash; team-member &ndash;&gt;-->
-        <!--        <div class="team-member">-->
-        <!--          <div class="d-flex mb-4">-->
-        <!--            <div class="card mb-3">-->
-        <!--              <img class="card-img-top" src="https://nguoichannuoi.vn/upload_images/images/khoa-hoc-ky-thuat-chan-nuoi/heo-rung.jpg" alt="team-member">-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <h5 class="card-title">Chế độ dinh dưỡng cho heo rừng</h5>-->
-        <!--          <p class="card-text">Nuôi heo rừng không còn là mô hình xa lạ, tuy nhiên để heo phát triển tốt, chắc thịt cần lưu ý đến chế độ dinh dưỡng hợp lý trong quá trình chăm sóc.</p>-->
-        <!--          <p class="card-text"><small class="text-muted">27/10/2022</small></p>-->
-
-        <!--        </div>-->
 
       </div>
     </div>
   </div>
   <!-- backgound image -->
-  <img src="assets/images/backgrounds/team-bg.png" alt="team-bg" class="img-fluid team-bg">
+  <img src="assets/images/backgrounds/team-bg.png" alt="team-bg" class="img-fluid team-bg" >
   <!-- background shapes -->
   <img class="team-bg-shape-1 up-down-animation" src="assets/images/background-shape/seo-ball-1.png"
        alt="background-shape">
@@ -267,7 +219,7 @@
       <div class="col-lg-8 col-sm-10 col-12 mx-auto">
         <form action="#">
           <div class="input-wrapper position-relative">
-            <input type="email" class="newsletter-form" id="newsletter" placeholder="Vui lòng nhập mail">
+            <input type="email" class="newsletter-form"  placeholder="Vui lòng nhập mail">
             <button type="submit" value="send" class="btn newsletter-btn">Đăng kí</button>
           </div>
         </form>
