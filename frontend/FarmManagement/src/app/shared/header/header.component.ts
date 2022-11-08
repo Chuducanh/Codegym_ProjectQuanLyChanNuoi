@@ -16,15 +16,9 @@ export class HeaderComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
               private authService: AuthService) {
-    //alert("le phi duy");
-    // this.shareService.getClickEvent().subscribe(() => {
-    //   this.loadHeader();
-    // })
   }
 
   loadHeader(): void {
-    alert(this.tokenStorageService.getToken());
-    alert(this.tokenStorageService.getUser());
     if (this.tokenStorageService.getToken()) {
       this.username = this.tokenStorageService.getUser().username;
       this.role = this.tokenStorageService.getUser().roles[0].name;
@@ -32,9 +26,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLoggedIn = false;
     }
-    // this.isLoggedIn = this.username != null;
-    // this.isLoggedIn = this.username != null;
-    alert(this.isLoggedIn);
   }
 
 
@@ -44,9 +35,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.tokenStorageService.logOut();
-    // this.authService.isLoggedIn = false;
     this.ngOnInit();
   }
-
-
 }

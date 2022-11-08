@@ -31,17 +31,38 @@
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa-solid fa-address-card icon-header"></i> Liên hệ</a>
           </li>
+          <li class="nav-item">
+            <a routerLink="/authen/login" class="nav-link" [hidden]="isLoggedIn">
+              <i class="fa-solid fa-right-to-bracket icon-header green-color"></i>
+              Đăng nhập
+            </a>
+            <a class="nav-link" [hidden]="!isLoggedIn"
+               data-bs-toggle="modal" data-bs-target="#logOutModal">
+              <i class="fa-solid fa-right-to-bracket icon-header red-color"></i>
+              Đăng xuất
+            </a>
+          </li>
         </ul>
-        <a routerLink="/authen/login" class="btn btn-primary ml-lg-3 primary-shadow" [hidden]="isLoggedIn">
-          <i class="fa-solid fa-right-to-bracket icon-header"></i>
-          Đăng nhập
-        </a>
-        <a class="btn btn-primary ml-lg-3 primary-shadow" [hidden]="!isLoggedIn" (click)="logOut()">
-          <i class="fa-solid fa-right-to-bracket icon-header"></i>
-          Đăng xuất
-        </a>
       </div>
     </nav>
   </div>
 </section>
-<!-- /navigation -->
+
+<!-- Modal -->
+<div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fs-5 text-danger" id="exampleModalLabel">Xác nhận đăng xuất</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn đăng xuất ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-success" (click)="logOut()" data-bs-dismiss="modal">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+</div>
