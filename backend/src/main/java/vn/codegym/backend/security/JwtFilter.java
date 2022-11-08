@@ -26,7 +26,7 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private MyUserDetailsServiceImpl myUserDetailsService;
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtFilter.class);
-    private final RequestMatcher requestMatcher = new AntPathRequestMatcher("/auth/login");
+    private final RequestMatcher requestMatcher = new AntPathRequestMatcher("/api/auth/login");
 
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 String token = this.getAccessToken(request);
                 System.out.println(token);
-                if (token != null && this.jwtUtil.validateJwtToken(token)) {
+                if (token != null && this.jwtUtil.validateAccessToken(token)) {
                     String username = this.jwtUtil.getUsernameFromToken(token);
                     UserDetails userDetails = this.myUserDetailsService.loadUserByUsername(username);
                     UsernamePasswordAuthenticationToken authentication =
@@ -46,7 +46,6 @@ public class JwtFilter extends OncePerRequestFilter {
                 LOGGER.error("Can't set user", ex);
             }
         }
-
         filterChain.doFilter(request, response);
     }
 

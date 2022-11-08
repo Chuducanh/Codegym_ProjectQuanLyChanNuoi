@@ -20,7 +20,7 @@ public class JwtUtil {
     public JwtUtil() {
     }
 
-    public String generateJwtToken(String username) {
+    public String generateAccessToken(String username) {
         return Jwts.builder().
                 setSubject(username).
                 setIssuedAt(new Date()).
@@ -29,8 +29,7 @@ public class JwtUtil {
                 compact();
     }
 
-    public boolean validateJwtToken(String authToken) {
-        System.out.println(authToken);
+    public boolean validateAccessToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(this.SECRET_KEY.getBytes()).parseClaimsJws(authToken);
             return true;

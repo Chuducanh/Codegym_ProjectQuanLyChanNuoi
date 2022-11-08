@@ -1,0 +1,47 @@
+<!-- navigation -->
+<section class="fixed-top navigation">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+
+      <a class="navbar-brand" routerLink=""><img src="assets/images/logo1.png" width="80" class="d-inline-block align-middle mr-2" alt="logo"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- navbar -->
+      <div class="collapse navbar-collapse text-center" id="navbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink=""><i class="fa-solid fa-house-chimney icon-header"></i> Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="#feature"><i class="fa-solid fa-gear icon-header"></i> Hệ thống</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa-solid fa-list-check icon-header"></i> Quản lý</a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="dropdown-item"><i class="fa-solid fa-list-check icon-header"></i><span class="link-name"> Quản lý vật nuôi</span></a></li>
+              <li><a href="#" class="dropdown-item"><i class="fa-solid fa-bowl-food icon-header"></i><span class="link-name"> Quản lý thức ăn</span></a></li>
+              <li><a href="#" class="dropdown-item"><i class="fa-solid fa-bug-slash icon-header"></i><span class="link-name"> Quản lý bệnh lý</span></a></li>
+              <li><a href="#" class="dropdown-item"><i class="fa-solid fa-warehouse icon-header"></i><span class="link-name"> Quản lý xuất chuồng</span></a></li>
+            </ul>
+
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="http://localhost:4200/#team"><i class="fa-solid fa-newspaper icon-header"></i> Tin tức</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa-solid fa-address-card icon-header"></i> Liên hệ</a>
+          </li>
+        </ul>
+        <a routerLink="/authen/login" class="btn btn-primary ml-lg-3 primary-shadow" [hidden]="isLoggedIn">
+          <i class="fa-solid fa-right-to-bracket icon-header"></i>
+          Đăng nhập
+        </a>
+        <a class="btn btn-primary ml-lg-3 primary-shadow" [hidden]="!isLoggedIn" (click)="logOut()">
+          <i class="fa-solid fa-right-to-bracket icon-header"></i>
+          Đăng xuất
+        </a>
+      </div>
+    </nav>
+  </div>
+</section>
+<!-- /navigation -->

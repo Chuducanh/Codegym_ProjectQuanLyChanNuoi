@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,28 +20,24 @@ import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenManager;
     @Autowired
     private JwtUtil jwtUtil;
 
-    public AuthenticationController() {
-    }
-
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> authenticate(@Valid @RequestBody LoginRequest loginRequest) {
             Authentication authentication = this.authenManager.
                     authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-            System.out.println(authentication);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             MyUserDetails myUserDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             List<String> roles = myUserDetails.getAuthorities().stream().
                     map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 
-            String accessToken = this.jwtUtil.generateJwtToken(loginRequest.getUsername());
+            String accessToken = this.jwtUtil.generateAccessToken(loginRequest.getUsername());
             JwtResponse jwtResponse = new JwtResponse(myUserDetails.getUsername(), accessToken, roles);
             return new ResponseEntity(jwtResponse, HttpStatus.OK);
     }
