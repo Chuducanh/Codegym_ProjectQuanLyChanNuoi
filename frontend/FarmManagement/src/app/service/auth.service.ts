@@ -3,7 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const AUTH_APT = environment.auth_api;
+const AUTH_API = environment.auth_api;
 @Injectable({
   providedIn: 'root'
 })
@@ -22,9 +22,13 @@ export class AuthService {
   }
 
   login(loginRequest): Observable<any> {
-    return this.http.post(AUTH_APT + '/login', {
+    return this.http.post(AUTH_API + '/login', {
       username: loginRequest.username,
       password: loginRequest.password
     }, this.httpOptions);
+  }
+
+  forgotPassword(email): Observable<any> {
+    return this.http.get(AUTH_API + '/forgot-password?email=' + email, this.httpOptions);
   }
 }

@@ -48,7 +48,6 @@ public class JwtUtil {
     }
 
     public String getUsernameFromToken(String token) {
-
         return this.parseClaims(token).getSubject();
     }
 

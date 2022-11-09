@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
   formResetPass: FormGroup;
+  isShowResetPassModal = false;
 
   constructor(private formBuilder: FormBuilder,
               private el: ElementRef,
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
+  login(): void {
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
         data => {
@@ -83,5 +84,22 @@ export class LoginComponent implements OnInit {
 
   get email() {
     return this.formResetPass.get('email');
+  }
+
+  forgotPassword() {
+    this.authService.forgotPassword(this.formResetPass.get('email').value).subscribe(
+      data => {
+        this.toastrService.success("", "Gửi email thành công: ", {
+          timeOut: 2000,
+          extendedTimeOut: 1500,
+          progressBar: true
+        });
+        this.isShowResetPassModal = false;
+      }
+    )
+  }
+
+  onForgotPasswordClicked() {
+    this.isShowResetPassModal = true;
   }
 }

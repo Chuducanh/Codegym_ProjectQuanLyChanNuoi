@@ -13,9 +13,7 @@ export class HeaderComponent implements OnInit {
   username: string;
   role: String;
 
-  constructor(private tokenStorageService: TokenStorageService,
-              private shareService: ShareService,
-              private authService: AuthService) {
+  constructor(private tokenStorageService: TokenStorageService) {
   }
 
   loadHeader(): void {
