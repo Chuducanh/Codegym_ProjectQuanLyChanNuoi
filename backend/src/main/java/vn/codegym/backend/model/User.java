@@ -1,5 +1,6 @@
 package vn.codegym.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,4 +21,7 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "username")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roles;
+    @OneToOne(mappedBy = "user")
+    @JsonBackReference
+    private Employee employee;
 }

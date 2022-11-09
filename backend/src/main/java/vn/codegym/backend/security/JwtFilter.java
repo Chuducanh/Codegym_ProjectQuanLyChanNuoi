@@ -33,7 +33,6 @@ public class JwtFilter extends OncePerRequestFilter {
         if (!this.requestMatcher.matches(request)) {
             try {
                 String token = this.getAccessToken(request);
-                System.out.println(token);
                 if (token != null && this.jwtUtil.validateAccessToken(token)) {
                     String username = this.jwtUtil.getUsernameFromToken(token);
                     UserDetails userDetails = this.myUserDetailsService.loadUserByUsername(username);

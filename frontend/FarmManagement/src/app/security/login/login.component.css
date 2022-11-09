@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 *{
   padding: 0;
   margin: 0;
@@ -5,7 +6,7 @@
 }
 
 body{
-  font-family: 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   overflow: hidden;
 }
 
@@ -239,4 +240,41 @@ span {
   //display: flex;
   margin-top: 55px;
   padding: 0 5px 0 5px;
+}
+/*Custom for forgot password*/
+.modal-content {
+  border-radius: 16px !important;
+  padding: 2rem;
+}
+.input-group {
+  padding: 8px 12px;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.input-group .fa-envelope {
+  margin-right: 10px;
+  font-size: 24px;
+}
+.input-group input {
+  padding: 0.2rem 0.3rem;
+  padding-left: 10px;
+  border-radius: 6px;
+}
+.btn-send {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  background-color: #1e7e34;
+  transition: 0.3s ease-in-out;
+  color: white;
+  cursor: pointer;
+}
+.btn-send:hover {
+  border: 1px solid #1e7e34;
+  background-color: white;
+  color: #1e7e34;
+  font-weight: bold;
 }

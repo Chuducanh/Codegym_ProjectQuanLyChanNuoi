@@ -10,11 +10,14 @@ export class ForgotPasswordComponent implements OnInit {
   formResetPass: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.formResetPass = this.formBuilder.group({
-      email: ['', Validators.email]
+      email: ['', [Validators.email, Validators.required]]
     })
   }
 
   ngOnInit(): void {
   }
 
+  get email() {
+    return this.formResetPass.get('email');
+  }
 }

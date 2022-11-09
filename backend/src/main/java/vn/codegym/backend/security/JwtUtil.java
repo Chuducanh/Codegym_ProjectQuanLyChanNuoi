@@ -44,11 +44,11 @@ public class JwtUtil {
         } catch (IllegalArgumentException ex) {
             LOGGER.error("JWT claims string is empty: {}", ex.getMessage());
         }
-
         return false;
     }
 
     public String getUsernameFromToken(String token) {
+
         return this.parseClaims(token).getSubject();
     }
 

@@ -16,6 +16,7 @@ import {ShareService} from "../../service/share.service";
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
+  formResetPass: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private el: ElementRef,
@@ -25,6 +26,9 @@ export class LoginComponent implements OnInit {
               private toastrService: ToastrService,
               private userService: UserService,
               private shareService: ShareService) {
+    this.formResetPass = this.formBuilder.group({
+      email: ['', [Validators.email, Validators.required]]
+    })
   }
 
   ngOnInit(): void {
@@ -47,7 +51,12 @@ export class LoginComponent implements OnInit {
               this.tokenStorageService.saveUserSession(data);
               this.authService.isLoggedIn = true;
               this.formLogin.reset();
-              this.shareService.sendClickEvent();
+              // this.shareService.sendClickEvent();
+              this.toastrService.success("", "Đăng nhập thành công: ", {
+                timeOut: 2000,
+                extendedTimeOut: 1500,
+                progressBar: true
+              });
               this.router.navigateByUrl("");
             }
           )
@@ -55,7 +64,7 @@ export class LoginComponent implements OnInit {
         err => {
           this.authService.isLoggedIn = false;
           this.toastrService.error("Tên đăng nhập hoặc tài khoản không đúng", "Đăng nhập thất bại: ", {
-            timeOut: 3000,
+            timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
           });
@@ -72,4 +81,7 @@ export class LoginComponent implements OnInit {
     return this.formLogin.get('password');
   }
 
+  get email() {
+    return this.formResetPass.get('email');
+  }
 }
