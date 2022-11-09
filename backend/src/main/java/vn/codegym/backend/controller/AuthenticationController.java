@@ -74,9 +74,10 @@ public class AuthenticationController {
     public ResponseEntity<?> resetPassword(@RequestBody ResetPassRequest request) {
         String username = jwtUtil.getUsernameFromToken(request.getToken());
         Optional<User> userOptional = userService.findByUsername(username);
-        if (!userOptional.isPresent()) {
+        if (!userOptional.isPresent() || !request.getNewPassword().equals(request.getConfirmPassword())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        userService.updatePassword(userOptional.get(), request.getNewPassword());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
