@@ -1,0 +1,89 @@
+<!--<script src="assets/js/main.js"></script>-->
+<img class="wave" src="assets/images/login/wave.png">
+<div class="login-container">
+  <div class="img">
+    <img src="assets/images/login/bg.svg">
+  </div>
+  <div class="login-content">
+    <form method="post" #flg="ngForm" [formGroup]="formLogin" (ngSubmit)="login()">
+      <img src="assets/images/login/avatar.svg">
+      <h2 class="title">Nông trại sạch</h2>
+      <div class="input-div username">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="div">
+          <!--          <h5>Tên đăng nhập</h5>-->
+          <input type="text" class="input" formControlName="username" placeholder="Tên đăng nhập">
+          <div *ngIf="username.invalid && (username.touched || flg.submitted)" class="text-danger message">
+            <div *ngIf="username.errors?.required">
+              Tên tài khoản không được để trống
+            </div>
+            <div *ngIf="username.errors?.pattern">
+              Tên tài khoản không được chứa ký tự đặc biệt
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <!--          <h5>Mật khẩu</h5>-->
+          <input type="password" class="input" formControlName="password" placeholder="Mật khẩu">
+          <div *ngIf="password.invalid && (password.touched || flg.submitted)" class="text-danger message">
+            <div *ngIf="password.errors?.required">
+              Mật khẩu không được để trống
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="forgotAndRememberPass">
+        <div class="rememberMe">
+          <input type="checkbox" formControlName="rememberMe"><span>Nhớ mật khẩu</span>
+        </div>
+        <!--        routerLink="/authen/forgot-password"-->
+        <a data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer" (click)="onForgotPasswordClicked()">Quên mật khẩu?</a>
+      </div>
+      <input type="submit" class="btn" value="Đăng nhập">
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isShowResetPassModal">
+  <div class="modal-dialog m-auto d-flex align-items-center h-100">
+    <div class="modal-content border border-5 border-primary">
+      <div class="modal-body">
+        <div>
+          <div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <p class="m-auto">
+                    <i class="fa fa-lock fa-4x"></i>
+                  </p>
+                  <h3 class="text-center my-3">Quên mật khẩu?</h3>
+                  <p class="m-1 text-danger">Vui lòng nhập email của bạn để đặt lại mật khẩu</p>
+                  <div class="panel-body">
+                    <form [formGroup]="formResetPass" method="post" class="m-auto" (submit)="forgotPassword()">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <i class="fas fa-envelope"></i>
+                          <input class="input-box" placeholder="Your email" class="form-control"  type="email" formControlName="email">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn-send">Gửi email</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
