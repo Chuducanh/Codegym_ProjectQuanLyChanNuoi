@@ -18,6 +18,7 @@
   // about video popup
   $(document).ready(function () {
     $('.venobox').venobox();
+
     // team slider
 
 // clients logo slider

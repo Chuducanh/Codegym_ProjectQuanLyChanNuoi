@@ -237,10 +237,12 @@ span {
 
 .message {
   position: absolute;
-//display: flex;
+  display: flex;
   margin-top: 55px;
   padding: 0 5px 0 5px;
 }
+
+
 /*Custom for forgot password*/
 .modal-content {
   border-radius: 16px !important;
@@ -271,10 +273,18 @@ span {
   transition: 0.3s ease-in-out;
   color: white;
   cursor: pointer;
+  margin-top: 8px;
 }
 .btn-send:hover {
   border: 1px solid #1e7e34;
   background-color: white;
   color: #1e7e34;
   font-weight: bold;
+}
+
+.message-reset {
+  position: absolute;
+  margin-top: 50px;
+  font-size: 16px;
+  padding: 8px 12px;
 }

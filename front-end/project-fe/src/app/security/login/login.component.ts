@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {TokenStorageService} from "../../service/token-storage.service";
@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
   formResetPass: FormGroup;
-  isShowResetPassModal = false;
+
+  @ViewChild('modalForgot') modalForgotPass;
+  @ViewChild('closBtn') closBtn;
 
   constructor(private formBuilder: FormBuilder,
               private el: ElementRef,
@@ -27,9 +29,6 @@ export class LoginComponent implements OnInit {
               private toastrService: ToastrService,
               private userService: UserService,
               private shareService: ShareService) {
-    this.formResetPass = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]]
-    })
   }
 
   ngOnInit(): void {
@@ -39,6 +38,9 @@ export class LoginComponent implements OnInit {
         rememberMe: []
       }
     );
+    this.formResetPass = this.formBuilder.group({
+      email: ['', [Validators.email, Validators.required]]
+    });
   }
 
   login(): void {
@@ -87,19 +89,28 @@ export class LoginComponent implements OnInit {
   }
 
   forgotPassword() {
-    this.authService.forgotPassword(this.formResetPass.get('email').value).subscribe(
-      data => {
-        this.toastrService.success("", "Gửi email thành công: ", {
-          timeOut: 2000,
-          extendedTimeOut: 1500,
-          progressBar: true
-        });
-        this.isShowResetPassModal = false;
-      }
-    )
+    if (this.formResetPass.valid) {
+      this.authService.forgotPassword(this.formResetPass.get('email').value).subscribe(
+        data => {
+          this.toastrService.success(data.message, "Thông báo", {
+            timeOut: 2000,
+            extendedTimeOut: 1500,
+            progressBar: true
+          });
+          this.closBtn.nativeElement.click();
+        },
+        error => {
+          this.toastrService.warning(error.error.message, "Thông báo", {
+            timeOut: 2000,
+            extendedTimeOut: 1500,
+            progressBar: true
+          })
+        }
+      )
+    }
   }
 
   onForgotPasswordClicked() {
-    this.isShowResetPassModal = true;
+    this.modalForgotPass.nativeElement.showModal();
   }
 }

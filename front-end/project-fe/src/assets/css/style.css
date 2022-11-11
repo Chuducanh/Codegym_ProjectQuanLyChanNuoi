@@ -1321,7 +1321,7 @@ a:hover {
 }
 
 .form-control {
-  height: 65px;
+  /*height: 65px;*/
   width: 100%;
   background: #f7fafc;
 }
