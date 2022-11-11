@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class NewsController {
     @Autowired
-    private INewsService newsService;
+    private INewsService<News> newsService;
     @GetMapping("/news")
     public ResponseEntity<List<News>> findAllNews(){
         List<News> newsList=newsService.findAll();

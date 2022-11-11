@@ -53,7 +53,7 @@ public class AuthenticationController {
 
             String accessToken = this.jwtUtil.generateAccessToken(loginRequest.getUsername());
             JwtResponse jwtResponse = new JwtResponse(myUserDetails.getUsername(), accessToken, roles);
-            return new ResponseEntity(jwtResponse, HttpStatus.OK);
+            return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
     }
 
     @GetMapping("/forgot-password")
@@ -72,7 +72,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestBody ResetPassRequest request) {
+    public ResponseEntity<ResponseMessage> resetPassword(@RequestBody ResetPassRequest request) {
         String username = jwtUtil.getUsernameFromToken(request.getToken());
         Optional<User> userOptional = userService.findByUsername(username);
         if (!userOptional.isPresent()) {

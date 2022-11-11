@@ -17,15 +17,12 @@ public class EmailServiceImpl implements EmailService{
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
 
-//            helper.setFrom("duyphi2011@gmail.com");
+            helper.setFrom("duyphi2011@gmail.com");
             helper.setTo(receiptEmail);
             String subject = "Đặt lại mật khẩu";
             String content = "<p>Hello,</p>"
                     + "<p>Nhấn vào link dưới đây để đặt lại mật khẩu:</p>"
-                    + "<p>" +
-//                    "<a href=\"" + link + "\">Đặt lại mật khẩu</a>" +
-                    "<a href=\'" + link + "\'>Đặt lại mật khẩu</a>" +
-                    "</p>"
+                    + "<p>" + "<a href=\'" + link + "\'>Đặt lại mật khẩu</a>" + "</p>"
                     + "<br>"
                     + "<p>Bỏ qua email này nếu bạn nhớ mật khẩu của mình.</p>";
             helper.setSubject(subject);

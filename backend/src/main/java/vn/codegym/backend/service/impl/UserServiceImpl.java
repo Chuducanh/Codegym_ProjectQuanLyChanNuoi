@@ -15,9 +15,6 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserRepository userRepository;
 
-    public UserServiceImpl() {
-    }
-
     public Optional<User> findByUsername(String username) {
         return this.userRepository.findByUsername(username);
     }

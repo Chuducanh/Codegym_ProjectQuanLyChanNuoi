@@ -1,7 +1,5 @@
 package vn.codegym.backend.model;
 
-import com.fasterxml.jackson.databind.DatabindException;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,9 +19,6 @@ public class News {
     private String author;
     @Column(columnDefinition = "date")
     private Date dateCreate;
-
-    public News() {
-    }
 
     public Long getId() {
         return id;

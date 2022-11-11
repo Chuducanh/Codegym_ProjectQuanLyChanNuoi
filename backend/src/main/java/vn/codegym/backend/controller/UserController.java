@@ -21,7 +21,6 @@ public class UserController {
     @GetMapping("/getUserFromToken")
     public ResponseEntity<User> getUserFormToken(@RequestParam String token)  {
         String username = jwtUtil.getUsernameFromToken(token);
-        System.out.println(username);
         Optional<User> userOptional = userService.findByUsername(username);
 
         if(!userOptional.isPresent())

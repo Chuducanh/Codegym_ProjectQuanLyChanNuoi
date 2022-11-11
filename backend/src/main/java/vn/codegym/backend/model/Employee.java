@@ -18,7 +18,7 @@ public class Employee {
     private String cmnd;
     private boolean gender;
     private String email;
-    private String img_url;
+    private String imgUrl;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
     private User user;

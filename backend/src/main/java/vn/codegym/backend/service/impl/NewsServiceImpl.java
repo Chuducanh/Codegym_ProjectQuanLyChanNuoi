@@ -14,7 +14,6 @@ public class NewsServiceImpl implements INewsService<News> {
     @Autowired
     private NewsRepository newsRepository;
 
-
     @Override
     public List<News> findAll() {
         return newsRepository.findAll();
@@ -27,7 +26,13 @@ public class NewsServiceImpl implements INewsService<News> {
 
     @Override
     public void save(News news) {
-        newsRepository.saveNews(news.getAuthor(),news.getContent(),news.getDateCreate(),news.getFirstSentence(),news.getSource_url(),news.getTitle());
+        newsRepository.saveNews(news.getAuthor(),
+                                news.getContent(),
+                                news.getDateCreate(),
+                                news.getFirstSentence(),
+                                news.getSource_url(),
+                                news.getTitle()
+                                );
     }
 
     @Override

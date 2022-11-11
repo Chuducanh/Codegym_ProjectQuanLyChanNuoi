@@ -13,9 +13,6 @@ public class RoleServiceImpl implements IRoleService {
     @Autowired
     private IRoleRepository roleRepository;
 
-    public RoleServiceImpl() {
-    }
-
     public List<Role> findByName(String name) {
         return this.roleRepository.findByName(name);
     }

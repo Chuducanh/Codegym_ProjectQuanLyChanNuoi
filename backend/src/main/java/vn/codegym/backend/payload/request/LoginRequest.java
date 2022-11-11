@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class LoginRequest {
-    @Pattern(regexp = "[a-zA-Z0-9_-]{5,12}$")
+    @Pattern(regexp = "^[a-zA-Z0-9_-]*$")
     @NotBlank
     private String username;
     @NotBlank
