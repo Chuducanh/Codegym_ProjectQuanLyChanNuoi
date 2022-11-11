@@ -14,11 +14,11 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Date birthDate;
-    private String cmnd;
+    private Date birthday;
+    private String identityNumber;
     private boolean gender;
     private String email;
-    private String imgUrl;
+    private String img_url;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
     private User user;

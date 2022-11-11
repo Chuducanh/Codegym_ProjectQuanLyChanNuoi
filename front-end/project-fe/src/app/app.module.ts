@@ -13,6 +13,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {SecurityModule} from "./security/security.module";
 import {JwtInterceptor} from "./helpers/jwt-interceptor";
+import {AnimalModule} from "./animal/animal.module";
+import {EmployeeModule} from "./employee/employee.module";
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import {JwtInterceptor} from "./helpers/jwt-interceptor";
     HttpClientModule,
     BodyModule,
     SecurityModule,
+    AnimalModule,
+    EmployeeModule,
     NgxSlickJsModule.forRoot({
       links: {
         jquery: 'https://code.jquery.com/jquery-3.4.0.min.js',

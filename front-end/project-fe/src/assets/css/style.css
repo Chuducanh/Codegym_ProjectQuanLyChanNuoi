@@ -1548,3 +1548,70 @@ ul.social-icon li a {
   font-size: 13px;
   overflow: hidden;
 }
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: transparent;
+  display: none;
+  height: 100% !important;
+  width: 100% !important;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.balls {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 150px auto 0px;
+  z-index: 999;
+}
+
+.balls div {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background-color: green;
+  margin-right:20px;
+  animation: wave 0.8s ease-in-out alternate infinite;
+}
+@keyframes wave {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1);
+    -o-transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.5);
+    -moz-transform:  scale(1.5);
+    -o-transform:  scale(1.5);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) scale(1);
+    -moz-transform: rotate(0deg) scale(1);
+    -o-transform: rotate(0deg) scale(1);
+  }
+}
+
+.balls div:nth-of-type(1) {
+  animation-delay: -0.4s;
+  background-color: red;
+}
+
+.balls div:nth-of-type(2) {
+  animation-delay: -0.2s;
+  background-color: yellow;
+
+}

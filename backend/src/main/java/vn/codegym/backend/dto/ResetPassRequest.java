@@ -1,4 +1,4 @@
-package vn.codegym.backend.model;
+package vn.codegym.backend.dto;
 
 import lombok.Data;
 

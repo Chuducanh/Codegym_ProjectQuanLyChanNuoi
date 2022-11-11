@@ -5,8 +5,20 @@
 export const environment = {
   production: false,
   api_news: 'http://localhost:8080/api/news',
-  auth_api: "http://localhost:8080/api/auth",
-  user_api: "http://localhost:8080/api/user"
+  auth_api: 'http://localhost:8080/api/auth',
+  user_api: 'http://localhost:8080/api/user',
+  apiEmployee: 'http://localhost:8080/api/employee',
+  api_url: 'http://localhost:8080/api/animal',
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  firebaseConfig : {
+    apiKey: 'AIzaSyDRbMhDSkNPSbvXWXiU4Kl_md6yHvQ4a2g',
+    authDomain: 'sprint-1-a1221i1.firebaseapp.com',
+    projectId: 'sprint-1-a1221i1',
+    storageBucket: 'sprint-1-a1221i1.appspot.com',
+    messagingSenderId: '829613950863',
+    appId: '1:829613950863:web:e75c7f7f84817ead052dfa',
+    measurementId: 'G-ES91XE6FCD'
+  }
 };
 
 /*

@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import vn.codegym.backend.model.Employee;
-import vn.codegym.backend.model.ResetPassRequest;
+import vn.codegym.backend.dto.ResetPassRequest;
 import vn.codegym.backend.model.User;
 import vn.codegym.backend.payload.request.LoginRequest;
 import vn.codegym.backend.payload.response.JwtResponse;

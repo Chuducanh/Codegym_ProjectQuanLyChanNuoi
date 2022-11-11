@@ -26,9 +26,7 @@ public class EmailServiceImpl implements EmailService{
                     + "<br>"
                     + "<p>Bỏ qua email này nếu bạn nhớ mật khẩu của mình.</p>";
             helper.setSubject(subject);
-
             helper.setText(content, true);
-
             mailSender.send(message);
             return true;
         } catch (Exception ex) {

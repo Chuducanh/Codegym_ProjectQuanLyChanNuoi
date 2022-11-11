@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="main-body">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
+      <div class="col mb-3" *ngFor="let employee of employees.content ; index as i">
+        <div class="card card-custom bg-white border-white border-0"  style="height: 450px">
+          <div class="card-custom-img" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB-v__ojYeJHEUO9oFnYxqqa13O2ipbUBgdg&usqp=CAU);"></div>
+          <div class="card-custom-avatar">
+            <img class="img-fluid" [src]="employee.img_url" alt="Avatar" />
+          </div>
+          <div class="card-body" style="overflow-y: auto">
+            <h4 class="card-title">{{employee.name}}</h4>
+            <p class="card-text" style="font-size: 17px">Mã nhân viên: NV{{employee.id}}<br>Tên tài khoản: {{employee.user.username}}
+              <br>Email: {{employee.email}}<br>Ngày sinh: {{employee.birthday | date: 'd/M/yyyy'}}
+              <br>
+              <span *ngIf="employee.gender ; else loggedOut">
+              Giới tính: Nữ
+            </span>
+
+              <ng-template #loggedOut>
+                Giới tính: Nam
+              </ng-template>
+              <br>Số CMND: {{employee.identityNumber}}
+            </p>
+          </div>
+          <div class="card-footer" style="background: inherit; border-color: inherit; text-align: center;font-weight:bolder" >
+            <!--            <a href="#" class="btn btn-outline-success" style="margin-right: 20px">Chỉnh sửa</a>-->
+            <a  class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleCreateModal"
+                style="margin-right:20px "   >Chỉnh sửa</a>
+            <a  class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="changeId(employee.id,employee.name)">Xóa</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="clearfix" *ngIf="(employees.totalElements> 0); else isEmpty">
+      <div style="font-size: 20px" class="hint-text">Hiển thị <b>{{employees.numberOfElements}}</b> trong số <b>{{employees.totalElements}}</b> nhân viên</div>
+      <ul class="pagination" >
+        <li class="page-item" *ngIf="indexPagination > 0"><a style="font-size: 20px" (click)="firstPage()" class="page-link">Trang đầu</a></li>
+        <li class="page-item" *ngIf="indexPagination > 1"><a style="font-size: 20px"  (click)="previousTwoPage()" class="page-link">{{indexPagination-1}}</a></li>
+        <li class="page-item" *ngIf="indexPagination > 0" ><a style="font-size: 20px" (click)="previousPage()"  class="page-link">{{indexPagination}}</a></li>
+        <li class="page-item active"><a style="font-size: 20px"  class="page-link">{{indexPagination+1}}</a></li>
+        <li class="page-item" *ngIf="indexPagination + 1 < employees.totalPages" ><a style="font-size: 20px" (click)="nextPage()"  class="page-link">{{indexPagination+2}}</a></li>
+        <li class="page-item" *ngIf="indexPagination + 2 < employees.totalPages"><a style="font-size: 20px" (click)="nextTwoPage()" class="page-link">{{indexPagination+3}}</a></li>
+        <li class="page-item" *ngIf="indexPagination + 1 < employees.totalPages"><a style="font-size: 20px" (click)="lastPage()" class="page-link">Trang cuối</a></li>
+      </ul>
+    </div>
+
+    <ng-template #isEmpty class="clearfix">
+      <div style="font-size: 30px" class="hint-text">Danh sách nhân viên trống</div>
+    </ng-template>
+
+
+
+  </div>
+</div>
+
+
+
+<!-- Modal Delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"  style="font-size: 20px">Xác nhận xóa</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="font-size: 17px">
+        Bạn có chắc muốn xóa <br>
+        Nhân viên: {{name}}<br>
+        <small style="color: #e1932c">Hành động này không thể hoàn tác</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="delete(id)">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Create -->
+<div class="modal fade" id="exampleCreateModal" tabindex="-1" aria-labelledby="exampleCreateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleCreateModalLabel"  style="font-size: 20px">Xác nhận xóa</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="font-size: 17px">
+        <form>
+          <div class="form-group" style="margin-bottom: 10px">
+            <label>Tên</label>
+            <input type="text" class="form-control"  required>
+          </div>
+          <div class="form-group" style="margin-bottom: 10px">
+            <label>Chứng minh nhân dân:</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 10px">
+            <label>Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 10px">
+            <label>Ngày sinh</label>
+            <input type="date" placeholder="dd-mm-yyyy" class="form-control" >
+          </div>
+          <div class="form-group" style="margin-bottom: 10px">
+            <div class="wrapper">
+              <div class="image">
+                <img src="" alt="">
+              </div>
+              <div class="content">
+                <div class="icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="text">
+                  No file chosen, yet!
+                </div>
+              </div>
+              <div id="cancel-btn">
+                <i class="fas fa-times"></i>
+              </div>
+              <div class="file-name">
+                File name here
+              </div>
+            </div>
+            <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+            <input id="default-btn" type="file" >
+          </div>
+          <div class="form-group" style="margin-top: 10px ">
+            <label  >Giới tính:</label>
+            <input type="radio" value="0" name="gender" style="margin: 0px 10px "  >Nam
+            <input type="radio" value="1" name="gender" style="margin: 0px 10px" >Nữ
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="delete(id)">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>

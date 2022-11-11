@@ -90,8 +90,10 @@ export class LoginComponent implements OnInit {
 
   forgotPassword() {
     if (this.formResetPass.valid) {
+      this.el.nativeElement.querySelector('.loading-container').style.display = 'block';
       this.authService.forgotPassword(this.formResetPass.get('email').value).subscribe(
         data => {
+          this.el.nativeElement.querySelector('.loading-container').style.display = 'none';
           this.toastrService.success(data.message, "Thông báo", {
             timeOut: 2000,
             extendedTimeOut: 1500,
@@ -100,6 +102,7 @@ export class LoginComponent implements OnInit {
           this.closBtn.nativeElement.click();
         },
         error => {
+          this.el.nativeElement.querySelector('.loading-container').style.display = 'none';
           this.toastrService.warning(error.error.message, "Thông báo", {
             timeOut: 2000,
             extendedTimeOut: 1500,
