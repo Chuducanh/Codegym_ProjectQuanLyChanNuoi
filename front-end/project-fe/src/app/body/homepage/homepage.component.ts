@@ -58,7 +58,6 @@ export class HomepageComponent implements OnInit {
   private getAll() {
     return this.newsService.getAll().subscribe(news => {
       this.newsList = news;
-      console.log(this.newsList);
     }, error => {
       console.log(error);
     });
