@@ -11,12 +11,9 @@ export class ListComponent implements OnInit {
 
   id: number;
   name: string;
-
   indexPagination = 0;
   public value = '';
-
-
-  employees;
+  employees: any;
 
   constructor(private employeeService: EmployeeService,
               private toastr: ToastrService) { }
@@ -29,7 +26,7 @@ export class ListComponent implements OnInit {
     this.employeeService.getAll(indexPagination).subscribe(
       data => {
         this.employees = data;
-
+        console.log(data);
       }
     );
   }

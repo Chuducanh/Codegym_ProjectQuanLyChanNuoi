@@ -1,12 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../service/auth.service";
-import {TokenStorageService} from "../../service/token-storage.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../service/auth.service';
+import {TokenStorageService} from '../../service/token-storage.service';
+import {Router} from '@angular/router';
 // @ts-ignore
-import {ToastrService} from "ngx-toastr";
-import {UserService} from "../../service/user.service";
-import {ShareService} from "../../service/share.service";
+import {ToastrService} from 'ngx-toastr';
+import {UserService} from '../../service/user.service';
+import {ShareService} from '../../service/share.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
   formResetPass: FormGroup;
+  url: string;
 
   @ViewChild('modalForgot') modalForgotPass;
   @ViewChild('closBtn') closBtn;
@@ -29,11 +30,12 @@ export class LoginComponent implements OnInit {
               private toastrService: ToastrService,
               private userService: UserService,
               private shareService: ShareService) {
+    this.url = this.router.url;
   }
 
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
-        username: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$")]],
+        username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]],
         password: ['', Validators.required],
         rememberMe: []
       }
@@ -55,18 +57,18 @@ export class LoginComponent implements OnInit {
               this.authService.isLoggedIn = true;
               this.formLogin.reset();
               this.shareService.sendClickEvent();
-              this.toastrService.success("", "Đăng nhập thành công: ", {
+              this.toastrService.success('', 'Đăng nhập thành công: ', {
                 timeOut: 2000,
                 extendedTimeOut: 1500,
                 progressBar: true
               });
-              this.router.navigateByUrl("");
+              this.router.navigateByUrl('');
             }
-          )
+          );
         },
         err => {
           this.authService.isLoggedIn = false;
-          this.toastrService.error("Tên đăng nhập hoặc tài khoản không đúng", "Đăng nhập thất bại: ", {
+          this.toastrService.error('Tên đăng nhập hoặc tài khoản không đúng', 'Đăng nhập thất bại: ', {
             timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
@@ -94,7 +96,7 @@ export class LoginComponent implements OnInit {
       this.authService.forgotPassword(this.formResetPass.get('email').value).subscribe(
         data => {
           this.el.nativeElement.querySelector('.loading-container').style.display = 'none';
-          this.toastrService.success(data.message, "Thông báo", {
+          this.toastrService.success(data.message, 'Thông báo', {
             timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
@@ -103,13 +105,13 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.el.nativeElement.querySelector('.loading-container').style.display = 'none';
-          this.toastrService.warning(error.error.message, "Thông báo", {
+          this.toastrService.warning(error.error.message, 'Thông báo', {
             timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
-          })
+          });
         }
-      )
+      );
     }
   }
 

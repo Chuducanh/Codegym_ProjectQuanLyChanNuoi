@@ -9,8 +9,8 @@ import {AnimalService} from '../../service/animal.service';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit {
-  indexPagination: number = 0;
-  animal;
+  indexPagination = 0;
+  animal: any;
   id: number;
   deletes: number[] = [];
   formCreate: FormGroup;
@@ -36,6 +36,20 @@ export class AnimalListComponent implements OnInit {
         validators: [this.dateValidator('dateIn', 'dateOut'),
           this.dateValidator('dateIn', 'dateOut')]
       });
+
+    this.formEdit = this.fb.group({
+        id: [],
+        cageId: ['', [Validators.required]],
+        isSick: ['', [Validators.required]],
+        weight: ['', [Validators.required]],
+        dateIn: ['', [Validators.required]],
+        dateOut: ['', [Validators.required]]
+      },
+      {
+        validators: [this.dateValidator('dateIn', 'dateOut'),
+          this.dateValidator('dateIn', 'dateOut')]
+      });
+    // ban đầu load vô id: underfine => lỗi
     // this.editModal(this.id);
   }
 
@@ -58,23 +72,24 @@ export class AnimalListComponent implements OnInit {
 
   editModal(id: number) {
     this.id = id;
-    this.formEdit = this.fb.group({
-        id: [],
-        cageId: ['', [Validators.required]],
-        isSick: ['', [Validators.required]],
-        weight: ['', [Validators.required]],
-        dateIn: ['', [Validators.required]],
-        dateOut: ['', [Validators.required]]
-      },
-      {
-        validators: [this.dateValidator('dateIn', 'dateOut'),
-          this.dateValidator('dateIn', 'dateOut')]
-      });
-
+    // this.formEdit = this.fb.group({
+    //     id: [],
+    //     cageId: ['', [Validators.required]],
+    //     isSick: ['', [Validators.required]],
+    //     weight: ['', [Validators.required]],
+    //     dateIn: ['', [Validators.required]],
+    //     dateOut: ['', [Validators.required]]
+    //   },
+    //   {
+    //     validators: [this.dateValidator('dateIn', 'dateOut'),
+    //       this.dateValidator('dateIn', 'dateOut')]
+    //   });
+    // Copy form eidt lên bỏ ở onInit luôn
     this.animalService.findById(this.id).subscribe(animalEdit => {
       this.formEdit.patchValue(animalEdit);
       // console.log(this.formEdit);
     });
+    this.formEdit.reset();
   }
 
   deleteMultiple() {
@@ -103,6 +118,7 @@ export class AnimalListComponent implements OnInit {
     }, error => {
       this.toastr.error('Thêm mới thất bại', 'Thông báo');
     });
+    this.formCreate.reset();
   }
 
   onSubmitEdit(id: number) {

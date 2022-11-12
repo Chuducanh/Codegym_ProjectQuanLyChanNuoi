@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from "../../service/token-storage.service";
-import {AuthService} from "../../service/auth.service";
-import {ShareService} from "../../service/share.service";
+import {TokenStorageService} from '../../service/token-storage.service';
+import {ShareService} from '../../service/share.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +9,17 @@ import {ShareService} from "../../service/share.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn: boolean = false;
+  isLoggedIn = false;
   username: string;
-  role: String;
+  role: string;
+  visible = true;
 
   constructor(private tokenStorageService: TokenStorageService,
-              private shareService: ShareService) {
+              private shareService: ShareService,
+              private router: Router) {
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
-    })
+    });
   }
 
   loadHeader(): void {
@@ -25,12 +27,11 @@ export class HeaderComponent implements OnInit {
       this.username = this.tokenStorageService.getUser().username;
       this.role = this.tokenStorageService.getUser().roles[0].name;
       this.isLoggedIn = true;
+      console.log(this.role);
     } else {
       this.isLoggedIn = false;
     }
   }
-
-
   ngOnInit(): void {
     this.loadHeader();
   }
@@ -38,5 +39,9 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.tokenStorageService.logOut();
     this.ngOnInit();
+    this.router.navigateByUrl('');
+  }
+  toggleCollapse() {
+    this.visible = !this.visible;
   }
 }

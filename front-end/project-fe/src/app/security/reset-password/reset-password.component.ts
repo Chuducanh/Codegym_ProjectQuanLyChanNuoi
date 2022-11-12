@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../service/auth.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ResetPassRequest} from "../../model/reset-pass-request";
-import {ToastrService} from "ngx-toastr";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../service/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ResetPassRequest} from '../../model/reset-pass-request';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,18 +12,20 @@ import {ToastrService} from "ngx-toastr";
 })
 export class ResetPasswordComponent implements OnInit {
   formResetPass: FormGroup;
+  url: string;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private activateRoute: ActivatedRoute,
               private toastrService: ToastrService,
               private router: Router) {
+    this.url = this.router.url;
   }
 
   ngOnInit(): void {
-    this.formResetPass=this.formBuilder.group({
+    this.formResetPass = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword:['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
 
     }, {validators: this.ConfirmedValidator('password', 'confirmPassword')});
   }
@@ -56,27 +58,27 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     if (this.formResetPass.valid) {
       const token = this.activateRoute.snapshot.paramMap.get('token');
-      const resetPassRequest: ResetPassRequest= {
+      const resetPassRequest: ResetPassRequest = {
         password: this.password.value,
         confirmPassword: this.confirmPassword.value,
-        token: token
-      }
+        token
+      };
       this.authService.resetPassword(resetPassRequest).subscribe(
         data => {
-          this.toastrService.success(data.message, "Thông báo", {
+          this.toastrService.success(data.message, 'Thông báo', {
             timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
           });
-          this.router.navigateByUrl("authen/login");
+          this.router.navigateByUrl('authen/login');
         },
         error => {
-          this.toastrService.warning(error.error.message, "Thông báo", {
+          this.toastrService.warning(error.error.message, 'Thông báo', {
             timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
           });
-        })
+        });
     }
   }
 }

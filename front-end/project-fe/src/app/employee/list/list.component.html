@@ -10,13 +10,12 @@
           </div>
           <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title">{{employee.name}}</h4>
-            <p class="card-text" style="font-size: 17px">Mã nhân viên: NV{{employee.id}}<br>Tên tài khoản: {{employee.user.username}}
+            <p class="card-text" style="font-size: 17px">Mã nhân viên: NV{{employee.id}}<br>Tên tài khoản: {{employee.email}}
               <br>Email: {{employee.email}}<br>Ngày sinh: {{employee.birthday | date: 'd/M/yyyy'}}
               <br>
               <span *ngIf="employee.gender ; else loggedOut">
               Giới tính: Nữ
             </span>
-
               <ng-template #loggedOut>
                 Giới tính: Nam
               </ng-template>
@@ -26,16 +25,12 @@
           <div class="card-footer" style="background: inherit; border-color: inherit; text-align: center;font-weight:bolder" >
             <!--            <a href="#" class="btn btn-outline-success" style="margin-right: 20px">Chỉnh sửa</a>-->
             <a  class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleCreateModal"
-                style="margin-right:20px "   >Chỉnh sửa</a>
+                style="margin-right:20px">Chỉnh sửa</a>
             <a  class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                (click)="changeId(employee.id,employee.name)">Xóa</a>
+                (click)="changeId(employee.id, employee.name)">Xóa</a>
           </div>
         </div>
       </div>
-
-
-
-
     </div>
 
     <div class="clearfix" *ngIf="(employees.totalElements> 0); else isEmpty">

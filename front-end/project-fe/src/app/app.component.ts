@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
+import {LoginComponent} from './security/login/login.component';
+import {ResetPasswordComponent} from './security/reset-password/reset-password.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project-fe';
+  @ViewChild(LoginComponent) login: LoginComponent;
+  @ViewChild(ResetPasswordComponent) resetPassword: ResetPasswordComponent;
 }

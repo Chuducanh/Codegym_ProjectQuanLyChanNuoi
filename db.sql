@@ -32,7 +32,7 @@ CREATE TABLE `animal` (
   `date_in` date NOT NULL,
   `date_out` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `animal` (
 
 LOCK TABLES `animal` WRITE;
 /*!40000 ALTER TABLE `animal` DISABLE KEYS */;
+INSERT INTO `animal` VALUES (5,15,_binary '\0',111,'2022-11-25','2022-12-11'),(6,14,_binary '\0',112,'2022-11-19','2022-11-20'),(7,1,_binary '\0',111,'2022-11-19','2022-11-26'),(8,2,_binary '\0',111,'2022-11-23','2022-12-11');
 /*!40000 ALTER TABLE `animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,15 +56,15 @@ CREATE TABLE `employee` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `cmnd` varchar(10) NOT NULL,
   `gender` bit(1) NOT NULL,
   `email` varchar(45) NOT NULL,
   `img_url` varchar(255) DEFAULT NULL,
-  `birth_date` datetime(6) DEFAULT NULL,
+  `birthday` datetime(6) DEFAULT NULL,
+  `identity_number` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_employee_user1_idx` (`username`),
   CONSTRAINT `fk_employee_user1` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +73,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'Nguyễn Phú Linh','admin','1452369870',_binary '','tamgiang12b@gmail.com','1','2002-09-03 00:00:00.000000'),(2,'Lê Thị B','employee','1234567890',_binary '\0','chanhducu@gmail.com','aaaaaaaaaaaa','2002-09-03 00:00:00.000000');
+INSERT INTO `employee` VALUES (1,'Nguyễn Phú Lĩnh','linh1234',_binary '','phulinhnguyen3@gmail.com','https://photocross.net/wp-content/uploads/2020/03/anh-chan-dung.jpg','2022-12-19 00:00:00.000000','401232347'),(2,'Chu Đức Anh','anh1234',_binary '','chanhducu@gmail.com','https://inanh.net/wp-content/uploads/2020/07/chup-anh-chan-dung-dep-4.png','2019-12-14 00:00:00.000000','234531325'),(3,'Lê Phi Duy','duy1234',_binary '\0','duyphi2011@gmail.com','https://bizweb.dktcdn.net/100/354/778/files/ky-thuat-chup-anh-chan-dung-dep-nhat-1.jpg?v=1619759659660','2018-09-08 00:00:00.000000','123454643'),(4,'Lê Thành Thái','thai1234',_binary '','lethaidn92@gmail.com','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLMPdbY8rPmY8KQ5Tti3czBsazzAJS0l1_1BDl3dP6Dg&s','2002-12-06 00:00:00.000000','b213436465'),(5,'Nguyễn Hữu Chánh','chanh1234',_binary '\0','nguyenhuuchanh993@gmail.com','https://img5.thuthuatphanmem.vn/uploads/2021/07/15/anh-chan-dung-dep_023435167.jpg','2006-08-07 00:00:00.000000','253424255'),(6,'Nguyễn Ngọc Anh Phương','phuong1234',_binary '\0','phuong.misadng@gmail.com','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToREQDcSbeCtKGKh34W4nyZPpX5jOXlc6sXi0ZpHB2Rw&s','2121-03-02 00:00:00.000000','213245665');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +150,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','$2a$12$D50xO84WFo9k05AvLEVjJOj/S2rulsp6/YXi.qWxr1j6jJ2KP5zIu'),('employee','$2a$12$D50xO84WFo9k05AvLEVjJOj/S2rulsp6/YXi.qWxr1j6jJ2KP5zIu');
+INSERT INTO `user` VALUES ('anh1234','$2a$12$pDa5GWC7iqBq6iRmBTEE3ePOewBp0FWCd6bZ4JmF92ndMYT0pD8/C'),('chanh1234','$2a$12$pDa5GWC7iqBq6iRmBTEE3ePOewBp0FWCd6bZ4JmF92ndMYT0pD8/C'),('duy1234','$2a$12$pDa5GWC7iqBq6iRmBTEE3ePOewBp0FWCd6bZ4JmF92ndMYT0pD8/C'),('linh1234','$2a$12$pDa5GWC7iqBq6iRmBTEE3ePOewBp0FWCd6bZ4JmF92ndMYT0pD8/C'),('phuong1234','$2a$12$pDa5GWC7iqBq6iRmBTEE3ePOewBp0FWCd6bZ4JmF92ndMYT0pD8/C'),('thai1234','$2a$12$pDa5GWC7iqBq6iRmBTEE3ePOewBp0FWCd6bZ4JmF92ndMYT0pD8/C');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +178,7 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES ('admin',1),('employee',2);
+INSERT INTO `user_role` VALUES ('duy1234',1),('phuong1234',1),('anh1234',2),('chanh1234',2),('linh1234',2),('thai1234',2);
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-10  2:37:51
+-- Dump completed on 2022-11-13  4:22:34
