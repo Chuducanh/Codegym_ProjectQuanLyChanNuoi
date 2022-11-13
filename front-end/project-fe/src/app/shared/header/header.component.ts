@@ -44,4 +44,8 @@ export class HeaderComponent implements OnInit {
   toggleCollapse() {
     this.visible = !this.visible;
   }
+
+  HideCollapse() {
+    this.visible = true;
+  }
 }

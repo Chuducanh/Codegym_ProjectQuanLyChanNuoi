@@ -1,16 +1,36 @@
+<section class="fixed-top navigation mt-5" style="top: 75px;z-index: 1000">
+  <div class="container-fluid">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-8">
+          <h2><b>Quản lý nhân viên</b></h2>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn btn-success" style="margin-right: 20px" data-bs-toggle="modal" data-bs-target="#createModal">
+            Thêm mới cá thể
+          </button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#multipleDeleteModal">
+            Xóa cá thể
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
 <div class="container">
   <div class="main-body">
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
       <div class="col mb-3" *ngFor="let employee of employees.content ; index as i">
-        <div class="card card-custom bg-white border-white border-0"  style="height: 450px">
+        <div class="card card-custom bg-white border-white border-0"  style="height: 600px">
           <div class="card-custom-img" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB-v__ojYeJHEUO9oFnYxqqa13O2ipbUBgdg&usqp=CAU);"></div>
           <div class="card-custom-avatar">
             <img class="img-fluid" [src]="employee.img_url" alt="Avatar" />
           </div>
-          <div class="card-body" style="overflow-y: auto">
+          <div class="card-body" style="">
             <h4 class="card-title">{{employee.name}}</h4>
-            <p class="card-text" style="font-size: 17px">Mã nhân viên: NV{{employee.id}}<br>Tên tài khoản: {{employee.email}}
+            <p class="card-text" style="font-size: 17px">Mã nhân viên: NV{{employee.id}}<br>Tên tài khoản: {{employee.user.username}}
               <br>Email: {{employee.email}}<br>Ngày sinh: {{employee.birthday | date: 'd/M/yyyy'}}
               <br>
               <span *ngIf="employee.gender ; else loggedOut">
@@ -24,9 +44,9 @@
           </div>
           <div class="card-footer" style="background: inherit; border-color: inherit; text-align: center;font-weight:bolder" >
             <!--            <a href="#" class="btn btn-outline-success" style="margin-right: 20px">Chỉnh sửa</a>-->
-            <a  class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleCreateModal"
-                style="margin-right:20px">Chỉnh sửa</a>
-            <a  class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            <a  class="btn btn-outline-success" id="edit" type="button" data-bs-toggle="modal" data-bs-target="#exampleCreateModal"
+                style="margin-right:20px;margin-bottom: 10px">Chỉnh sửa</a>
+            <a  class="btn btn-outline-danger" id="delete" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 (click)="changeId(employee.id, employee.name)">Xóa</a>
           </div>
         </div>
@@ -54,7 +74,7 @@
 
   </div>
 </div>
-
+</section>
 
 
 <!-- Modal Delete -->
