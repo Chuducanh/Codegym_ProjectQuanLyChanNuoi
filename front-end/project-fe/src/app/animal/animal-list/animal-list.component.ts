@@ -21,9 +21,7 @@ export class AnimalListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(111);
     this.getAll(this.indexPagination);
-
     this.formCreate = this.fb.group({
         id: [],
         cageId: ['', [Validators.required]],
@@ -87,7 +85,6 @@ export class AnimalListComponent implements OnInit {
     // Copy form eidt lên bỏ ở onInit luôn
     this.animalService.findById(this.id).subscribe(animalEdit => {
       this.formEdit.patchValue(animalEdit);
-      // console.log(this.formEdit);
     });
     this.formEdit.reset();
   }

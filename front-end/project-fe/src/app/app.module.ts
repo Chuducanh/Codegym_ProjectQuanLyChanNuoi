@@ -51,7 +51,7 @@ import {EmployeeModule} from "./employee/employee.module";
             multi: true
         }],
     exports: [
-        LogosliderComponent
+        LogosliderComponent,
     ],
     bootstrap: [AppComponent]
 })

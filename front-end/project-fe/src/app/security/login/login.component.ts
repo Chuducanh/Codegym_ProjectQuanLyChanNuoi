@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
               private userService: UserService,
               private shareService: ShareService) {
     this.url = this.router.url;
+    // console.log(this.url);
   }
 
   ngOnInit(): void {
@@ -52,7 +53,6 @@ export class LoginComponent implements OnInit {
           this.tokenStorageService.saveTokenSession(data.accessToken);
           this.userService.getUserFromToken(data.accessToken).subscribe(
             data => {
-              console.log(data);
               this.tokenStorageService.saveUserSession(data);
               this.authService.isLoggedIn = true;
               this.formLogin.reset();
