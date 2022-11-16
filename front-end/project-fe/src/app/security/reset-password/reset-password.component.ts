@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../service/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ResetPassRequest} from '../../model/reset-pass-request';
-import {ToastrService} from 'ngx-toastr';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../service/auth/auth.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ResetPassRequest} from "../../model/reset-pass-request";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-reset-password',
@@ -12,19 +12,17 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ResetPasswordComponent implements OnInit {
   formResetPass: FormGroup;
-  url: string;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private activateRoute: ActivatedRoute,
               private toastrService: ToastrService,
               private router: Router) {
-    this.url = this.router.url;
   }
 
   ngOnInit(): void {
     this.formResetPass = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
 
     }, {validators: this.ConfirmedValidator('password', 'confirmPassword')});
@@ -61,8 +59,9 @@ export class ResetPasswordComponent implements OnInit {
       const resetPassRequest: ResetPassRequest = {
         password: this.password.value,
         confirmPassword: this.confirmPassword.value,
-        token
-      };
+        token: token
+      }
+
       this.authService.resetPassword(resetPassRequest).subscribe(
         data => {
           this.toastrService.success(data.message, 'Thông báo', {

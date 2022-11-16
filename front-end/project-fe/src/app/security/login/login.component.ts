@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../service/auth.service';
+import {AuthService} from '../../service/auth/auth.service';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {Router} from '@angular/router';
 // @ts-ignore
@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
   formResetPass: FormGroup;
-  url: string;
 
   @ViewChild('modalForgot') modalForgotPass;
   @ViewChild('closBtn') closBtn;
@@ -30,8 +29,6 @@ export class LoginComponent implements OnInit {
               private toastrService: ToastrService,
               private userService: UserService,
               private shareService: ShareService) {
-    this.url = this.router.url;
-    // console.log(this.url);
   }
 
   ngOnInit(): void {

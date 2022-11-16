@@ -60,15 +60,15 @@ public class AuthenticationController {
     public ResponseEntity<ResponseMessage> forgotPassword(@RequestParam String email){
         Optional<Employee> employeeOptional = employeeService.findByEmail(email);
         if (!employeeOptional.isPresent()) {
-            return new ResponseEntity<>(new ResponseMessage("Email không tồn tại trong hệ thống"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ResponseMessage("Email không tồn tại trong hệ thống."), HttpStatus.NOT_FOUND);
         }
         Employee employee = employeeOptional.get();
         String token = this.jwtUtil.generateAccessToken(employee.getUser().getUsername());
         String resetPasswordLink = "http://localhost:4200/authen/resetpassword/" + token;
         if (emailService.sendEmail(email, resetPasswordLink)) {
-            return new ResponseEntity<>(new ResponseMessage("Gửi email thành công"), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseMessage("Gửi email thành công."), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new ResponseMessage("Gửi email thất bại"), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseMessage("Gửi email thất bại."), HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/reset-password")
@@ -76,12 +76,12 @@ public class AuthenticationController {
         String username = jwtUtil.getUsernameFromToken(request.getToken());
         Optional<User> userOptional = userService.findByUsername(username);
         if (!userOptional.isPresent()) {
-            return new ResponseEntity<>(new ResponseMessage("Link đổi mật khẩu đã hết hiệu lực"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseMessage("Link đổi mật khẩu đã hết hiệu lực."), HttpStatus.BAD_REQUEST);
         }
         if (!request.getPassword().equals(request.getConfirmPassword())) {
-            return new ResponseEntity<>(new ResponseMessage("Mật khẩu không trùng khớp"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseMessage("Mật khẩu không trùng khớp."), HttpStatus.BAD_REQUEST);
         }
         userService.updatePassword(userOptional.get(), request.getPassword());
-        return new ResponseEntity<>(new ResponseMessage("Đổi mật khẩu thành công"), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseMessage("Đổi mật khẩu thành công."), HttpStatus.OK);
     }
 }

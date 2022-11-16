@@ -4,14 +4,17 @@ import { CommonModule } from '@angular/common';
 import { AnimalRoutingModule } from './animal-routing.module';
 import { AnimalListComponent } from './animal-list/animal-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AnimalComponent} from './animal.component';
+import {ShareModule} from '../share/share.module';
 
 
 @NgModule({
-  declarations: [AnimalListComponent],
-    imports: [
-        CommonModule,
-        AnimalRoutingModule,
-        ReactiveFormsModule
-    ]
+  declarations: [AnimalComponent, AnimalListComponent],
+  imports: [
+    CommonModule,
+    AnimalRoutingModule,
+    ReactiveFormsModule,
+    ShareModule
+  ]
 })
 export class AnimalModule { }

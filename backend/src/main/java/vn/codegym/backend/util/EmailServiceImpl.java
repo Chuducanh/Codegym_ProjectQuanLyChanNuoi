@@ -17,7 +17,8 @@ public class EmailServiceImpl implements EmailService{
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
 
-            helper.setFrom("codegym1221@gmail.com");
+//            helper.setFrom("codegym1221@gmail.com");
+            helper.setFrom("duyphi2011@gmail.com");
             helper.setTo(receiptEmail);
             String subject = "Đặt lại mật khẩu";
             String content = "<p>Hello,</p>"

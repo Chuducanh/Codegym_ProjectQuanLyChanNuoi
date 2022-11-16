@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from "./login/login.component";
-import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {LoginComponent} from './login/login.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 
 const routes: Routes = [
   {
-    path: "authen",
+    path: 'authen',
     children: [
       {
-        path: "login",
+        path: 'login',
         component: LoginComponent
       },
       {
-        path: "resetpassword/:token",
+        path: 'resetpassword/:token',
         component: ResetPasswordComponent
       }
     ]

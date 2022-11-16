@@ -88,16 +88,6 @@ form{
   height: 45px;
 }
 
-/*.input-div > div > h5{*/
-/*  position: absolute;*/
-/*  left: 10px;*/
-/*  top: 50%;*/
-/*  transform: translateY(-50%);*/
-/*  color: #999;*/
-/*  font-size: 18px;*/
-/*  transition: .3s;*/
-/*}*/
-
 .input-div:before, .input-div:after{
   content: '';
   position: absolute;
@@ -119,11 +109,6 @@ form{
 .input-div.focus:before, .input-div.focus:after{
   width: 50%;
 }
-
-/*.input-div.focus > div > h5{*/
-/*  top: -5px;*/
-/*  font-size: 15px;*/
-/*}*/
 
 .input-div.focus > .i > i{
   color: #38d39f;
@@ -169,7 +154,6 @@ form{
   background-position: right;
 }
 
-
 @media screen and (max-width: 1050px){
   .container{
     grid-gap: 5rem;
@@ -189,6 +173,12 @@ form{
   .img img{
     width: 400px;
   }
+}
+
+.forgotAndRememberPass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (max-width: 900px){
@@ -238,8 +228,9 @@ span {
 .message {
   position: absolute;
   display: flex;
-  margin-top: 55px;
+  margin-top: 52px;
   padding: 0 5px 0 5px;
+  font-size: 15px !important;
 }
 
 
@@ -248,6 +239,7 @@ span {
   border-radius: 16px !important;
   padding: 2rem;
 }
+
 .input-group {
   padding: 8px 12px;
   margin: 0.5rem 0;
@@ -256,15 +248,18 @@ span {
   align-items: center;
   box-sizing: border-box;
 }
+
 .input-group .fa-envelope {
   margin-right: 10px;
   font-size: 24px;
 }
+
 .input-group input {
   padding: 0.2rem 0.3rem;
   padding-left: 10px;
   border-radius: 6px;
 }
+
 .btn-send {
   border: 1px solid #ffffff;
   border-radius: 6px;
@@ -275,16 +270,10 @@ span {
   cursor: pointer;
   margin-top: 8px;
 }
+
 .btn-send:hover {
   border: 1px solid #1e7e34;
   background-color: white;
   color: #1e7e34;
   font-weight: bold;
-}
-
-.message-reset {
-  position: absolute;
-  margin-top: 50px;
-  font-size: 16px;
-  padding: 8px 12px;
 }

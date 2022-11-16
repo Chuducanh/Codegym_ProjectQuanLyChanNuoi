@@ -1,12 +1,11 @@
-<!--<script src="assets/js/main.js"></script>-->
-<div>
 <img class="wave" src="assets/images/login/wave.png">
 <div class="login-container">
   <div class="img">
     <img src="assets/images/login/bg.svg">
   </div>
   <div class="login-content">
-    <form method="post" #flg="ngForm" [formGroup]="formLogin" (ngSubmit)="login()">
+    <form method="post" #flg="ngForm" [formGroup]="formLogin" (ngSubmit)="login()"
+          appFocusInvalidInput #focusInput="focusInvalidInput">
       <img src="assets/images/login/avatar.svg">
       <h2 class="title">Nông trại sạch</h2>
       <div class="input-div username">
@@ -14,14 +13,13 @@
           <i class="fas fa-user"></i>
         </div>
         <div class="div">
-          <!--          <h5>Tên đăng nhập</h5>-->
-          <input type="text" class="input" formControlName="username" placeholder="Tên đăng nhập">
+          <input type="text" class="input" formControlName="username" placeholder="Tên tài khoản">
           <div *ngIf="username.invalid && (username.touched || flg.submitted)" class="text-danger message">
             <div *ngIf="username.errors?.required">
-              Tên tài khoản không được để trống
+              Tên tài khoản không được để trống.
             </div>
             <div *ngIf="username.errors?.pattern">
-              Tên tài khoản không được chứa ký tự đặc biệt
+              Tên tài khoản không được chứa ký tự đặc biệt.
             </div>
           </div>
         </div>
@@ -31,11 +29,10 @@
           <i class="fas fa-lock"></i>
         </div>
         <div class="div">
-          <!--          <h5>Mật khẩu</h5>-->
           <input type="password" class="input" formControlName="password" placeholder="Mật khẩu">
           <div *ngIf="password.invalid && (password.touched || flg.submitted)" class="text-danger message">
             <div *ngIf="password.errors?.required">
-              Mật khẩu không được để trống
+              Mật khẩu không được để trống.
             </div>
           </div>
         </div>
@@ -51,15 +48,12 @@
       </div>
       <input type="submit" class="btn" value="Đăng nhập">
     </form>
-
   </div>
 </div>
 
-<!-- Modal -->
-<!--*ngIf="isShowResetPassModal"-->
 <div #modalForgot class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog m-auto d-flex align-items-center h-100">
-    <div class="modal-content border border-5 border-primary">
+    <div class="modal-content border border-3 border-primary">
       <div class="modal-body">
         <div>
           <div>
@@ -70,7 +64,7 @@
                     <i class="fa fa-lock fa-4x" data-bs-dismiss="modal" #closBtn></i>
                   </p>
                   <h3 class="text-center my-3">Quên mật khẩu?</h3>
-                  <p class="m-1 text-danger">Vui lòng nhập email của bạn để đặt lại mật khẩu</p>
+                  <p class="m-1 text-danger">Vui lòng nhập email của bạn để đặt lại mật khẩu.</p>
                   <div class="panel-body">
                     <div class="loading-container">
                       <div class="balls">
@@ -79,17 +73,18 @@
                         <div></div>
                       </div>
                     </div>
-                    <form [formGroup]="formResetPass" method="post" class="m-auto" #freset (submit)="forgotPassword()">
+                    <form [formGroup]="formResetPass" method="post" class="m-auto" #freset (submit)="forgotPassword()"
+                          appFocusInvalidInput #focusInput="focusInvalidInput">
                       <div class="form-group">
                         <div class="input-group">
                           <i class="fas fa-envelope"></i>
                           <input class="input-box" placeholder="Email" class="form-control"  type="email" formControlName="email">
-                          <div *ngIf="email.invalid && (email.touched || freset.submitted)" class="text-danger message-reset">
+                          <div *ngIf="email.invalid && (email.touched || freset.submitted)" class="text-danger message">
                             <div *ngIf="email.errors?.required">
-                              Email không được để trống
+                              Email không được để trống.
                             </div>
                             <div *ngIf="email.errors?.email">
-                              Email không hợp lệ
+                              Email không hợp lệ.
                             </div>
                           </div>
                         </div>
@@ -105,6 +100,4 @@
       </div>
     </div>
   </div>
-</div>
-
 </div>
