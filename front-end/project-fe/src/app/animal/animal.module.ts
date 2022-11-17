@@ -10,6 +10,7 @@ import {ShareModule} from '../share/share.module';
 
 @NgModule({
   declarations: [AnimalComponent, AnimalListComponent],
+  exports: [],
   imports: [
     CommonModule,
     AnimalRoutingModule,
