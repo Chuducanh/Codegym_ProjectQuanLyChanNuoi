@@ -1,7 +1,7 @@
 export interface Animal {
   id?: number;
   cageId?: string;
-  isSick?: boolean;
+  isSick?: number;
   weight?: number;
   dateIn?: Date;
   dateOut?: Date;

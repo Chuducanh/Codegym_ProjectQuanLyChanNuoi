@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AnimalService} from '../../service/animal.service';
+import {Animal} from '../../model/animal';
 
 @Component({
   selector: 'app-animal-list',
@@ -11,17 +12,19 @@ import {AnimalService} from '../../service/animal.service';
 export class AnimalListComponent implements OnInit {
   indexPagination = 0;
   animal: any;
+  animalCreate: Animal;
+  animalEdit: Animal;
   id: number;
   deletes: number[] = [];
   formCreate: FormGroup;
   formEdit: FormGroup;
-
   constructor(private animalService: AnimalService, private toastr: ToastrService,
               private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.getAll(this.indexPagination);
+
     this.formCreate = this.fb.group({
         id: [],
         cageId: ['', [Validators.required]],
@@ -47,8 +50,6 @@ export class AnimalListComponent implements OnInit {
         validators: [this.dateValidator('dateIn', 'dateOut'),
           this.dateValidator('dateIn', 'dateOut')]
       });
-    // ban đầu load vô id: underfine => lỗi
-    // this.editModal(this.id);
   }
 
   dateValidator(dateIn: string, dateOut: string) {
@@ -70,19 +71,6 @@ export class AnimalListComponent implements OnInit {
 
   editModal(id: number) {
     this.id = id;
-    // this.formEdit = this.fb.group({
-    //     id: [],
-    //     cageId: ['', [Validators.required]],
-    //     isSick: ['', [Validators.required]],
-    //     weight: ['', [Validators.required]],
-    //     dateIn: ['', [Validators.required]],
-    //     dateOut: ['', [Validators.required]]
-    //   },
-    //   {
-    //     validators: [this.dateValidator('dateIn', 'dateOut'),
-    //       this.dateValidator('dateIn', 'dateOut')]
-    //   });
-    // Copy form eidt lên bỏ ở onInit luôn
     this.animalService.findById(this.id).subscribe(animalEdit => {
       this.formEdit.patchValue(animalEdit);
     });
@@ -103,14 +91,17 @@ export class AnimalListComponent implements OnInit {
     } else {
       this.deletes.push(id);
     }
-    // console.log(this.deletes);
   }
 
   onSubmit() {
-    const animal = this.formCreate.value;
-    // console.log(animal);
-    this.animalService.create(animal).subscribe(() => {
-      this.getAll(0);
+    this.animalCreate = this.formCreate.value;
+    if (this.formCreate.get('isSick').value === '1') {
+      this.animalCreate.isSick = 1;
+    } else {
+      this.animalCreate.isSick = 0;
+    }
+    this.animalService.create(this.animalCreate).subscribe(() => {
+      this.getAll(this.indexPagination);
       this.toastr.success('Thêm mới thành công', 'Thông báo');
     }, error => {
       this.toastr.error('Thêm mới thất bại', 'Thông báo');
@@ -119,9 +110,14 @@ export class AnimalListComponent implements OnInit {
   }
 
   onSubmitEdit(id: number) {
-    const animal = this.formEdit.value;
-    this.animalService.update(id, animal).subscribe(() => {
-      this.getAll(0);
+    this.animalEdit = this.formEdit.value;
+    if (this.formEdit.get('isSick').value === '1') {
+      this.animalEdit.isSick = 1;
+    } else {
+      this.animalEdit.isSick = 0;
+    }
+    this.animalService.update(id, this.animalEdit).subscribe(() => {
+      this.getAll(this.indexPagination);
       this.toastr.success('Chỉnh sửa thành công', 'Thông báo');
     }, error => {
       this.toastr.error('Chỉnh sửa thất bại', 'Thông báo');
@@ -132,6 +128,7 @@ export class AnimalListComponent implements OnInit {
     this.animalService.getAll(indexPagination).subscribe(
       data => {
         this.animal = data;
+        console.log(data);
       });
   }
 
@@ -141,8 +138,11 @@ export class AnimalListComponent implements OnInit {
 
   delete(id: number) {
     this.animalService.delete(id).subscribe(() => {
-      this.getAll(0);
       this.toastr.success('Đã xóa thành công', 'Thông báo');
+      if (this.animal.numberOfElements === 1) {
+        this.indexPagination = this.indexPagination - 1;
+      }
+      this.getAll(this.indexPagination);
     }, error => {
       this.toastr.error('Xóa thất bại', 'Thông báo');
     });
@@ -158,11 +158,8 @@ export class AnimalListComponent implements OnInit {
     this.indexPagination = this.indexPagination + 1;
     if (this.indexPagination >= this.animal.totalPages) {
       this.indexPagination = this.indexPagination - 1;
-      this.ngOnInit();
     }
-    this.animalService.getAll(this.indexPagination).subscribe(data => {
-      this.animal = data;
-    });
+    this.ngOnInit();
   }
 
   previousPage() {
@@ -170,12 +167,8 @@ export class AnimalListComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
     if (this.indexPagination == -1) {
       this.indexPagination = 0;
-      this.ngOnInit();
-    } else {
-      this.animalService.getAll(this.indexPagination).subscribe(data => {
-        this.animal = data;
-      });
     }
+    this.ngOnInit();
   }
 
   previousTwoPage() {
@@ -204,9 +197,7 @@ export class AnimalListComponent implements OnInit {
 
   lastPage() {
     this.indexPagination = this.animal.totalPages - 1;
-    this.animalService.getAll(this.indexPagination).subscribe(data => {
-      this.animal = data;
-    });
+    this.ngOnInit();
   }
 
 }

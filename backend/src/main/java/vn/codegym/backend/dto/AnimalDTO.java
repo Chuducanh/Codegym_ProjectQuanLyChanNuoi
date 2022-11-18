@@ -1,5 +1,6 @@
 package vn.codegym.backend.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -14,6 +15,7 @@ public class AnimalDTO implements Validator {
     private String cageId;
 
     @NotNull
+    @JsonProperty
     private boolean isSick;
 
     @NotNull
