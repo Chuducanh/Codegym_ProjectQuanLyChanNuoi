@@ -19,4 +19,7 @@ export class EmployeeService {
   delete(id: number): Observable<Employee> {
     return this.http.delete<Employee>(API_URL + '/' + id);
   }
+  findById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(API_URL + '/' + id);
+  }
 }

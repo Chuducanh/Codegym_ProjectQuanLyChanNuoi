@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {EmployeeService} from '../../service/employee.service';
+import {Employee} from '../../model/employee';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-list',
@@ -8,15 +10,16 @@ import {EmployeeService} from '../../service/employee.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
   id: number;
   name: string;
   indexPagination = 0;
   public value = '';
   employees: any;
+  employeeFind: Employee;
 
   constructor(private employeeService: EmployeeService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.getAll(this.indexPagination);
@@ -37,14 +40,15 @@ export class ListComponent implements OnInit {
 
   delete(id: number) {
     this.employeeService.delete(id).subscribe(() => {
+      this.toastr.success('Xóa nhân viên thành công.', 'Thông báo');
+      if (this.employees.numberOfElemenents === 1) {
+        this.indexPagination = this.indexPagination - 1;
+      }
       this.getAll(this.indexPagination);
-      this.toastr.success('Xóa nhân viên thành công', 'Thông báo');
     }, error => {
-      this.toastr.error('Xóa nhân viên thất bại', 'Thông báo' );
+      this.toastr.error('Xóa nhân viên thất bại.', 'Thông báo' );
     });
   }
-
-
   firstPage() {
     this.indexPagination = 0;
     this.ngOnInit();

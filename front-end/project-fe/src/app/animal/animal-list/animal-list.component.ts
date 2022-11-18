@@ -102,9 +102,9 @@ export class AnimalListComponent implements OnInit {
     }
     this.animalService.create(this.animalCreate).subscribe(() => {
       this.getAll(this.indexPagination);
-      this.toastr.success('Thêm mới thành công', 'Thông báo');
+      this.toastr.success('Thêm mới thành công.', 'Thông báo');
     }, error => {
-      this.toastr.error('Thêm mới thất bại', 'Thông báo');
+      this.toastr.error('Thêm mới thất bại.', 'Thông báo');
     });
     this.formCreate.reset();
   }
@@ -118,9 +118,9 @@ export class AnimalListComponent implements OnInit {
     }
     this.animalService.update(id, this.animalEdit).subscribe(() => {
       this.getAll(this.indexPagination);
-      this.toastr.success('Chỉnh sửa thành công', 'Thông báo');
+      this.toastr.success('Chỉnh sửa thành công.', 'Thông báo');
     }, error => {
-      this.toastr.error('Chỉnh sửa thất bại', 'Thông báo');
+      this.toastr.error('Chỉnh sửa thất bại.', 'Thông báo');
     });
   }
 
@@ -138,13 +138,13 @@ export class AnimalListComponent implements OnInit {
 
   delete(id: number) {
     this.animalService.delete(id).subscribe(() => {
-      this.toastr.success('Đã xóa thành công', 'Thông báo');
+      this.toastr.success('Đã xóa thành công.', 'Thông báo');
       if (this.animal.numberOfElements === 1) {
         this.indexPagination = this.indexPagination - 1;
       }
       this.getAll(this.indexPagination);
     }, error => {
-      this.toastr.error('Xóa thất bại', 'Thông báo');
+      this.toastr.error('Xóa thất bại.', 'Thông báo');
     });
   }
 

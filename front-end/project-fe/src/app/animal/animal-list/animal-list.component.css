@@ -305,3 +305,6 @@ table.table .avatar {
 /*  font-size: large;*/
 /*  font-weight: initial;*/
 /*}*/
+.star {
+  color: red;
+}

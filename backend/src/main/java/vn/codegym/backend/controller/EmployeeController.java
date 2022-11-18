@@ -32,6 +32,7 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         employeeService.delete(id);
-        return new ResponseEntity<>(employeeOptional.get(), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(employeeOptional.get(), HttpStatus.OK);
     }
+
 }
