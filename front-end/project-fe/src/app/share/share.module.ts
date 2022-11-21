@@ -7,6 +7,7 @@ import {FooterComponent} from "./footer/footer.component";
 import {HeaderComponent} from "./header/header.component";
 import {LogosliderComponent} from "./logoslider/logoslider.component";
 import {FocusInvalidInputDirective} from "../helpers/focus-invalid-input.directive";
+import {NgxSlickJsModule} from "ngx-slickjs";
 
 
 @NgModule({
@@ -18,9 +19,10 @@ import {FocusInvalidInputDirective} from "../helpers/focus-invalid-input.directi
     ShareComponent,
     FocusInvalidInputDirective
   ],
-  imports: [
-    CommonModule,
-    ShareRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ShareRoutingModule,
+        NgxSlickJsModule
+    ]
 })
 export class ShareModule { }

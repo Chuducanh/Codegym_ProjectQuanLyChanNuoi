@@ -10,37 +10,78 @@
     <!--    </div>-->
 
     <div class="client-logo-slider align-self-center">
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-1.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-2.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-3.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-4.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-5.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-1.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-2.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-3.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-4.png"
-                                                                 alt="client-logo"></a>
-      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
-                                                                 src="../../../assets/images/clients-logo/client-logo-5.png"
-                                                                 alt="client-logo"></a>
+      <div slickContainer #slickController="slick" [slickConfig]="config">
+        <ng-container *ngIf="slickController.initialize">
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-1.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-2.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-3.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-4.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-5.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-1.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-2.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-3.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-4.png"
+                                                                     alt="client-logo"></a>
+          <a slickItem href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"
+                                                                     src="../../../assets/images/clients-logo/client-logo-5.png"
+                                                                     alt="client-logo"></a>
+
+
+        </ng-container>
+      </div>
+
     </div>
+
+
+<!--    <div class="client-logo-slider align-self-center">-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-1.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-2.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-3.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-4.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-5.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-1.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-2.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-3.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-4.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--      <a href="#" class="text-center d-block outline-0 p-5"><img class="d-unset img-fluid"-->
+<!--                                                                 src="../../../assets/images/clients-logo/client-logo-5.png"-->
+<!--                                                                 alt="client-logo"></a>-->
+<!--    </div>-->
   </div>
 </section>
 <!-- /client logo slider -->
